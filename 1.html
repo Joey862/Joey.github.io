@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>暗网搜索引擎 - 作者:Joey</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --accent-color: #4CAF50;
+            --secondary-color: #333;
+            --border-color: #444;
+            --hover-color: #555;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+        
+        h1 {
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+        
+        .author {
+            color: var(--text-color);
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+        
+        .search-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .search-box {
+            width: 80%;
+            max-width: 600px;
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        #search-input {
+            flex-grow: 1;
+            padding: 12px 15px;
+            background-color: var(--secondary-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            font-family: inherit;
+            font-size: 16px;
+            outline: none;
+        }
+        
+        .search-btn {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border: none;
+            padding: 0 20px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+        }
+        
+        .search-options {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .search-option {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 8px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .search-option:hover {
+            background-color: var(--hover-color);
+        }
+        
+        .search-option.active {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+        
+        .news-section, .tools-section, .notice-section {
+            background-color: var(--secondary-color);
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            color: var(--accent-color);
+            margin-top: 0;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+        
+        .news-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        
+        .news-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .news-title {
+            color: var(--text-color);
+            margin: 0 0 5px 0;
+            cursor: pointer;
+        }
+        
+        .news-title:hover {
+            text-decoration: underline;
+        }
+        
+        .news-source {
+            font-size: 0.8em;
+            color: #999;
+        }
+        
+        .tool-form {
+            margin-bottom: 15px;
+        }
+        
+        .tool-input {
+            width: 100%;
+            padding: 8px;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            margin-bottom: 8px;
+            font-family: inherit;
+        }
+        
+        .tool-btn {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        
+        .tool-result {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            display: none;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.8em;
+            color: #777;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-box {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>暗网搜索引擎</h1>
+            <div class="author">作者: Joey</div>
+        </header>
+        
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="输入搜索内容...">
+                <button class="search-btn" id="search-btn">搜索</button>
+            </div>
+            
+            <div class="search-options">
+                <div class="search-option active" data-engine="baidu">百度</div>
+                <div class="search-option" data-engine="tor">Tor</div>
+                <div class="search-option" data-engine="ddosi">DDoSI</div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="main-content">
+                <div class="news-section">
+                    <h2 class="section-title">最新联网新闻</h2>
+                    <div id="news-container">
+                        <!-- 新闻将通过JavaScript动态加载 -->
+                        <div class="news-item">
+                            <h3 class="news-title">正在加载新闻...</h3>
+                            <div class="news-source">来源: 百度新闻</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <div class="notice-section">
+                    <h2 class="section-title">通知区</h2>
+                    <p>系统正常运行中 - 2025年6月10日</p>
+                    <p>最近更新: 新增Tor搜索支持</p>
+                </div>
+                
+                <div class="tools-section">
+                    <h2 class="section-title">查询工具</h2>
+                    
+                    <div class="tool-form">
+                        <h3>IP归属地查询</h3>
+                        <input type="text" class="tool-input" id="ip-input" placeholder="输入IP地址">
+                        <button class="tool-btn" id="ip-btn">查询</button>
+                        <div class="tool-result" id="ip-result"></div>
+                    </div>
+                    
+                    <div class="tool-form">
+                        <h3>电话号码查询</h3>
+                        <input type="text" class="tool-input" id="phone-input" placeholder="输入电话号码">
+                        <button class="tool-btn" id="phone-btn">查询</button>
+                        <div class="tool-result" id="phone-result"></div>
+                    </div>
+                    
+                    <div class="tool-form">
+                        <h3>身份证查询</h3>
+                        <input type="text" class="tool-input" id="id-input" placeholder="输入身份证号码">
+                        <button class="tool-btn" id="id-btn">查询</button>
+                        <div class="tool-result" id="id-result"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            &copy; 2025 暗网搜索引擎 - 仅供学习研究使用
+        </footer>
+    </div>
+    
+    <script>
+        // 当前搜索引擎
+        let currentEngine = 'baidu';
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 搜索引擎选择
+            const searchOptions = document.querySelectorAll('.search-option');
+            searchOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    searchOptions.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                    currentEngine = this.dataset.engine;
+                });
+            });
+            
+            // 搜索按钮点击事件
+            document.getElementById('search-btn').addEventListener('click', performSearch);
+            
+            // 输入框回车事件
+            document.getElementById('search-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+            
+            // 查询工具按钮事件
+            document.getElementById('ip-btn').addEventListener('click', queryIp);
+            document.getElementById('phone-btn').addEventListener('click', queryPhone);
+            document.getElementById('id-btn').addEventListener('click', queryId);
+            
+            // 加载新闻
+            loadNews();
+        });
+        
+        // 执行搜索
+        function performSearch() {
+            const query = document.getElementById('search-input').value.trim();
+            if (!query) return;
+            
+            let searchUrl;
+            switch(currentEngine) {
+                case 'baidu':
+                    searchUrl = `https://www.baidu.com/s?wd=${encodeURIComponent(query)}`;
+                    break;
+                case 'tor':
+                    searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+                    // 注意: 实际Tor搜索需要通过Tor浏览器访问.onion网站
+                    break;
+                case 'ddosi':
+                    searchUrl = `https://ddosi.org/search?q=${encodeURIComponent(query)}`;
+                    break;
+                default:
+                    searchUrl = `https://www.baidu.com/s?wd=${encodeURIComponent(query)}`;
+            }
+            
+            window.open(searchUrl, '_blank');
+        }
+        
+        // 加载新闻
+        function loadNews() {
+            // 这里应该是从百度获取新闻的API调用
+            // 由于跨域限制，实际应用中需要通过后端代理或使用允许跨域的API
+            
+            // 模拟数据
+            const newsContainer = document.getElementById('news-container');
+            newsContainer.innerHTML = '';
+            
+            const mockNews = [
+                { title: '全球网络安全峰会2025在日内瓦召开', source: '百度新闻' },
+                { title: '新型量子加密技术有望彻底改变网络安全', source: '百度科技' },
+                { title: '暗网交易平台被多国联合取缔', source: '百度社会' },
+                { title: '2025年全球互联网用户突破60亿', source: '百度财经' },
+                { title: '中国发布新版网络安全法实施细则', source: '百度政治' }
+            ];
+            
+            mockNews.forEach(news => {
+                const newsItem = document.createElement('div');
+                newsItem.className = 'news-item';
+                newsItem.innerHTML = `
+                    <h3 class="news-title">${news.title}</h3>
+                    <div class="news-source">来源: ${news.source}</div>
+                `;
+                newsContainer.appendChild(newsItem);
+                
+                // 添加点击事件
+                newsItem.querySelector('.news-title').addEventListener('click', function() {
+                    alert(`打开新闻详情: ${news.title}\n\n实际应用中这里会跳转到新闻页面`);
+                });
+            });
+        }
+        
+        // 查询IP归属地
+        function queryIp() {
+            const ip = document.getElementById('ip-input').value.trim();
+            if (!ip) {
+                alert('请输入IP地址');
+                return;
+            }
+            
+            // 使用ip-api.com的API
+            const resultDiv = document.getElementById('ip-result');
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = '<p>查询中...</p>';
+            
+            fetch(`https://ip-api.com/json/${ip}?lang=zh-CN`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        resultDiv.innerHTML = `
+                            <p>IP: ${ip}</p>
+                            <p>国家: ${data.country}</p>
+                            <p>地区: ${data.regionName}</p>
+                            <p>城市: ${data.city}</p>
+                            <p>ISP: ${data.isp}</p>
+                            <p>AS: ${data.as}</p>
+                        `;
+                    } else {
+                        resultDiv.innerHTML = `<p>查询失败: ${data.message || '未知错误'}</p>`;
+                    }
+                })
+                .catch(error => {
+                    resultDiv.innerHTML = `<p>查询失败: ${error.message}</p>`;
+                });
+        }
+        
+        // 查询电话号码
+        function queryPhone() {
+            const phone = document.getElementById('phone-input').value.trim();
+            if (!phone) {
+                alert('请输入电话号码');
+                return;
+            }
+            
+            // 使用聚合数据的API
+            const resultDiv = document.getElementById('phone-result');
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = '<p>查询中...</p>';
+            
+            // 注意: 实际应用中需要替换为有效的API key
+            const apiKey = 'YOUR_JUHE_API_KEY';
+            fetch(`http://apis.juhe.cn/mobile/get?phone=${phone}&key=${apiKey}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error_code === 0) {
+                        resultDiv.innerHTML = `
+                            <p>号码: ${phone}</p>
+                            <p>省份: ${data.result.province}</p>
+                            <p>城市: ${data.result.city}</p>
+                            <p>区号: ${data.result.areacode}</p>
+                            <p>邮编: ${data.result.zip}</p>
+                            <p>运营商: ${data.result.company}</p>
+                            <p>卡类型: ${data.result.card}</p>
+                        `;
+                    } else {
+                        resultDiv.innerHTML = `<p>查询失败: ${data.reason || '未知错误'}</p>`;
+                    }
+                })
+                .catch(error => {
+                    resultDiv.innerHTML = `<p>查询失败: ${error.message}</p>`;
+                });
+        }
+        
+        // 查询身份证
+        function queryId() {
+            const id = document.getElementById('id-input').value.trim();
+            if (!id) {
+                alert('请输入身份证号码');
+                return;
+            }
+            
+            // 使用wapi.cn的API
+            const resultDiv = document.getElementById('id-result');
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = '<p>查询中...</p>';
+            
+            // 注意: 实际应用中需要替换为有效的API key
+            const apiKey = 'YOUR_WAPI_API_KEY';
+            fetch(`https://www.wapi.cn/api/icard?id=${id}&key=${apiKey}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 200) {
+                        resultDiv.innerHTML = `
+                            <p>身份证号: ${id}</p>
+                            <p>所属地区: ${data.data.area}</p>
+                            <p>出生日期: ${data.data.birthday}</p>
+                            <p>性别: ${data.data.sex === 'M' ? '男' : '女'}</p>
+                        `;
+                    } else {
+                        resultDiv.innerHTML = `<p>查询失败: ${data.message || '未知错误'}</p>`;
+                    }
+                })
+                .catch(error => {
+                    resultDiv.innerHTML = `<p>查询失败: ${error.message}</p>`;
+                });
+        }
+    </script>
+</body>
+</html>
