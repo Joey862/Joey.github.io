@@ -1,477 +1,748 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>æš—ç½‘æœç´¢å¼•æ“ - ä½œè€…:Joey</title>
+    <meta charset="GB2312">
+    <title>»¯Ñ§Ò©Æ·ÏúÊÛÒ»Çø£¬¶şÇø»¯Ñ§ÊÔ¼Á´óÈ«</title>
     <style>
-        :root {
-            --bg-color: #121212;
-            --text-color: #e0e0e0;
-            --accent-color: #4CAF50;
-            --secondary-color: #333;
-            --border-color: #444;
-            --hover-color: #555;
-        }
-        
+h1 {
+font-size: 2em;
+}
         body {
-            font-family: 'Courier New', monospace;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            font-family: "ËÎÌå", serif;
+        background: linear-gradient(to right, #feec00, #5cfe00);
             margin: 0;
-            padding: 20px;
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 20px;
-        }
-        
-        h1 {
-            color: var(--accent-color);
-            margin-bottom: 5px;
-        }
-        
-        .author {
-            color: var(--text-color);
-            font-size: 0.9em;
-            margin-bottom: 20px;
-        }
-        
-        .search-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-        
-        .search-box {
-            width: 80%;
-            max-width: 600px;
-            display: flex;
-            margin-bottom: 15px;
-        }
-        
-        #search-input {
-            flex-grow: 1;
-            padding: 12px 15px;
-            background-color: var(--secondary-color);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            font-family: inherit;
-            font-size: 16px;
-            outline: none;
-        }
-        
-        .search-btn {
-            background-color: var(--accent-color);
-            color: var(--bg-color);
-            border: none;
-            padding: 0 20px;
-            cursor: pointer;
-            font-family: inherit;
-            font-weight: bold;
-        }
-        
-        .search-options {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .search-option {
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-            border: 1px solid var(--border-color);
-            padding: 8px 15px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .search-option:hover {
-            background-color: var(--hover-color);
-        }
-        
-        .search-option.active {
-            background-color: var(--accent-color);
-            color: var(--bg-color);
-        }
-        
-        .content {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 20px;
-        }
-        
-        .news-section, .tools-section, .notice-section {
-            background-color: var(--secondary-color);
-            padding: 15px;
-            border: 1px solid var(--border-color);
-            margin-bottom: 20px;
-        }
-        
-        .section-title {
-            color: var(--accent-color);
-            margin-top: 0;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
-        }
-        
-        .news-item {
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px dashed var(--border-color);
-        }
-        
-        .news-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        
-        .news-title {
-            color: var(--text-color);
-            margin: 0 0 5px 0;
-            cursor: pointer;
-        }
-        
-        .news-title:hover {
-            text-decoration: underline;
-        }
-        
-        .news-source {
-            font-size: 0.8em;
-            color: #999;
-        }
-        
-        .tool-form {
-            margin-bottom: 15px;
-        }
-        
-        .tool-input {
-            width: 100%;
-            padding: 8px;
-            background-color: var(--bg-color);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            margin-bottom: 8px;
-            font-family: inherit;
-        }
-        
-        .tool-btn {
-            background-color: var(--accent-color);
-            color: var(--bg-color);
-            border: none;
-            padding: 8px 15px;
-            cursor: pointer;
-            font-family: inherit;
-        }
-        
-        .tool-result {
-            margin-top: 10px;
             padding: 10px;
-            background-color: var(--bg-color);
-            border: 1px solid var(--border-color);
-            display: none;
+            color: #333;
         }
-        
-        footer {
+        .container {
+            width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 15px;
+            border: 1px solid #999;
+        }
+        h1 {
+            color: #006;
             text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color);
-            font-size: 0.8em;
-            color: #777;
+            font-size: 24px;
+            border-bottom: 2px solid #006;
+            padding-bottom: 5px;
         }
-        
-        @media (max-width: 768px) {
-            .content {
-                grid-template-columns: 1fr;
-            }
-            
-            .search-box {
-                width: 95%;
-            }
+        .chemical-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .chemical-table th {
+            background-color: #006;
+            color: white;
+            padding: 5px;
+            text-align: left;
+        }
+        .chemical-table td {
+            padding: 5px;
+            border-bottom: 1px dotted #999;
+        }
+        .chemical-table tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        .add-to-cart {
+            background-color: #900;
+            color: white;
+            border: none;
+            padding: 2px 8px;
+            cursor: pointer;
+        }
+        .cart-section {
+            margin-top: 20px;
+            border-top: 2px solid #006;
+            padding-top: 10px;
+        }
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .cart-table th {
+            background-color: #666;
+            color: white;
+            padding: 5px;
+        }
+        .cart-total {
+            text-align: right;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .checkout-btn {
+            background-color: #060;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            cursor: pointer;
+            float: right;
+        }
+        .search-filter {
+            margin: 10px 0;
+        }
+        .search-filter input, .search-filter select {
+            padding: 3px;
+            border: 1px solid #999;
         }
     </style>
+<html>
+    <head>
+        <link rel="stylesheet" href="./css/fault-style.css">
+    </head>
+    <body>
+        <div class="text" data-text="»¯Ñ§ÊÔ¼Á²»°ìÖ¤ÔõÃ´°ì£¿À´ÕÒJoey£¬»¯È¦µÄ¼¯ºÏµØ">
+            »¯Ñ§ÊÔ¼Á²»°ìÖ¤ÔõÃ´°ì£¿À´ÕÒJoey£¬»¯È¦µÄ¼¯ºÏµØ£¬»¯Ñ§Ò©Æ·Ò»Çø£¬¶şÇø£¬°µÍøÒ»Çø£¬¶şÇø
+        </div>
+        <body>
+</html>
+</html>
+
+<body>
+<html>
+
+
+<head>
+
+
+    <style>
+
+
+        .float-left {
+
+
+            float: left;
+
+
+            margin: 10px;
+
+
+        }
+
+
+        .float-right {
+
+
+            float: right;
+
+
+            margin: 10px;
+
+
+        }
+
+
+    </style>
+
+
+</head>
+
+
+<body>
+
+
+    <img src="7.jpg" alt="Example Image" class="float-left">
+
+
+    
+
+
+</body>
+
+
+</html>
+
+
+
+
+<script>
+var myImage = new Image(200, 30);
+myImage.src = "1.gif";
+document.body.appendChild(myImage);
+</script>
+<script>
+var myImage = new Image(200, 30);
+myImage.src = "2.gif";
+document.body.appendChild(myImage);
+</script>
+<script>
+var myImage = new Image(200, 30);
+myImage.src = "3.gif";
+document.body.appendChild(myImage);
+</script>
+<script>
+var myImage = new Image(200, 30);
+myImage.src = "4.gif";
+document.body.appendChild(myImage);
+</script>
+<script>
+var myImage = new Image(200, 30);
+myImage.src = "5.gif";
+document.body.appendChild(myImage);
+</script>
+<script>
+var myImage = new Image(200, 30);
+myImage.src = "6.gif";
+document.body.appendChild(myImage);
+</script>
+<script>
+var myImage = new Image(200, 30);
+myImage.src = "1.gif";
+document.body.appendChild(myImage);
+</script>
+<script>
+var myImage = new Image(200, 30);
+myImage.src = "2.gif";
+document.body.appendChild(myImage);
+</script>
+<script>
+var myImage = new Image(200, 30);
+myImage.src = "3.gif";
+document.body.appendChild(myImage);
+</script>
+<script>
+var myImage = new Image(200, 30);
+myImage.src = "4.gif";
+document.body.appendChild(myImage);
+</script>
+<script>
+var myImage = new Image(200, 30);
+myImage.src = "5.gif";
+document.body.appendChild(myImage);
+</script>
+<script>
+var myImage = new Image(200, 30);
+myImage.src = "6.gif";
+document.body.appendChild(myImage);
+</script>
+<script>
+var myImage = new Image(200, 30);
+myImage.src = "1.gif";
+document.body.appendChild(myImage);
+</script>
+<script>
+var myImage = new Image(200, 30);
+myImage.src = "2.gif";
+document.body.appendChild(myImage);
+</script>
+<script>
+var myImage = new Image(200, 30);
+myImage.src = "3.gif";
+document.body.appendChild(myImage);
+</script>
+<script>
+var myImage = new Image(200, 30);
+myImage.src = "4.gif";
+document.body.appendChild(myImage);
+</script>
+<script>
+var myImage = new Image(200, 30);
+myImage.src = "5.gif";
+document.body.appendChild(myImage);
+</script>
+<script>
+var myImage = new Image(200, 30);
+myImage.src = "6.gif";
+document.body.appendChild(myImage);
+</script>
+<script>
+var myImage = new Image(200, 30);
+myImage.src = "3.gif";
+document.body.appendChild(myImage);
+</script>
+<script>
+var myImage = new Image(200, 30);
+myImage.src = "4.gif";
+document.body.appendChild(myImage);
+</script>
+    <h1>JoeyµÄ»¯Ñ§×ÉÑ¯</h1>
+<p>ÓÀ¾ÃÓòÃû£¬Çë½ØÆÁ±£´æ</p>
+    <p>ÉîÉî¸ĞĞ»Ö§³ÖÎÒµÄÂÈÆøCL2Ğ¡Íõ£¨ºÓÄÏ£©£¬ÒÔ¼°»¯È¦ ¹ãÔªÂäÆÇµÄ»¯Ñ§ÉúºÍĞìÖİµÄÒÒËáÇ¦ºÍ¸÷Î»ÅóÓÑÃÇ</p>
+<p>´ËÍøÕ¾×÷ÎªÒâÏòÍøÕ¾£¬ÓĞÒâ¹ºÂòÇëÁªÏµJoey Î¢ĞÅ Î¢ĞÅºÅ£ºJoey862£¬ÔÙ´ÎÉùÃ÷£¬»¯Ñ§Ò©Æ·ÓÃÓë¿ÆÑĞÓÃÍ¾£¬ÇëÎğÍâ´«</p>
+<p>ÔÚÕ¹Ê¾Ö®Ç°£¬ÌØ±ğËµÃ÷£¬ÓĞĞ©Ò©Æ·¹æ¸ñ²»Ò»£¬ĞèÌáÇ°Ô¤¶¨£¬Î¢ĞÅÉÏÓĞĞ©ÉÌÆ·»áÖ±½Ó´òÕÛ£¬³¬¹ı200ÒÔÉÏÃâÔË·Ñ</p>
+<p>Ö§³Ö¶àÖÖ³§¼Ò£¬»¶Ó­¶©¹º£¬´ËÍøÕ¾ÊÇ×Ê½ğÔ¤¹À</p>
+</body>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>æš—ç½‘æœç´¢å¼•æ“</h1>
-            <div class="author">ä½œè€…: Joey</div>
-        </header>
+        <h1>Joey»¯Ñ§Ò©Æ·×ÉÑ¯ÏµÍ³</h1>
         
-        <div class="search-container">
-            <div class="search-box">
-                <input type="text" id="search-input" placeholder="è¾“å…¥æœç´¢å†…å®¹...">
-                <button class="search-btn" id="search-btn">æœç´¢</button>
-            </div>
-            
-            <div class="search-options">
-                <div class="search-option active" data-engine="baidu">ç™¾åº¦</div>
-                <div class="search-option" data-engine="tor">Tor</div>
-                <div class="search-option" data-engine="ddosi">DDoSI</div>
-            </div>
+        <div class="search-filter">
+            <input type="text" id="searchInput" placeholder="ËÑË÷»¯Ñ§Æ·...">
+            <select id="categoryFilter">
+                <option value="">ËùÓĞÀà±ğ</option>
+                <option value="Ëá">Ëá</option>
+                <option value="¼î">¼î</option>
+                <option value="ÓĞ»úÈÜ¼Á">ÓĞ»úÈÜ¼Á</option>
+                <option value="ÑÎ">ÑÎ</option>
+                <option value="Ñõ»¯¼Á">Ñõ»¯¼Á</option>
+<option value="ÂéÒ©">ÂéÒ©</option>
+<option value="¶¾Ò©">¶¾Ò©</option>
+
+            </select>
         </div>
         
-        <div class="content">
-            <div class="main-content">
-                <div class="news-section">
-                    <h2 class="section-title">æœ€æ–°è”ç½‘æ–°é—»</h2>
-                    <div id="news-container">
-                        <!-- æ–°é—»å°†é€šè¿‡JavaScriptåŠ¨æ€åŠ è½½ -->
-                        <div class="news-item">
-                            <h3 class="news-title">æ­£åœ¨åŠ è½½æ–°é—»...</h3>
-                            <div class="news-source">æ¥æº: ç™¾åº¦æ–°é—»</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="sidebar">
-                <div class="notice-section">
-                    <h2 class="section-title">é€šçŸ¥åŒº</h2>
-                    <p>ç³»ç»Ÿæ­£å¸¸è¿è¡Œä¸­ - 2025å¹´6æœˆ10æ—¥</p>
-                    <p>æœ€è¿‘æ›´æ–°: æ–°å¢Toræœç´¢æ”¯æŒ</p>
-                </div>
-                
-                <div class="tools-section">
-                    <h2 class="section-title">æŸ¥è¯¢å·¥å…·</h2>
-                    
-                    <div class="tool-form">
-                        <h3>IPå½’å±åœ°æŸ¥è¯¢</h3>
-                        <input type="text" class="tool-input" id="ip-input" placeholder="è¾“å…¥IPåœ°å€">
-                        <button class="tool-btn" id="ip-btn">æŸ¥è¯¢</button>
-                        <div class="tool-result" id="ip-result"></div>
-                    </div>
-                    
-                    <div class="tool-form">
-                        <h3>ç”µè¯å·ç æŸ¥è¯¢</h3>
-                        <input type="text" class="tool-input" id="phone-input" placeholder="è¾“å…¥ç”µè¯å·ç ">
-                        <button class="tool-btn" id="phone-btn">æŸ¥è¯¢</button>
-                        <div class="tool-result" id="phone-result"></div>
-                    </div>
-                    
-                    <div class="tool-form">
-                        <h3>èº«ä»½è¯æŸ¥è¯¢</h3>
-                        <input type="text" class="tool-input" id="id-input" placeholder="è¾“å…¥èº«ä»½è¯å·ç ">
-                        <button class="tool-btn" id="id-btn">æŸ¥è¯¢</button>
-                        <div class="tool-result" id="id-result"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <table class="chemical-table">
+            <thead>
+                <tr>
+                    <th>Ãû³Æ</th>
+                    <th>»¯Ñ§Ê½</th>
+                    <th>Àà±ğ</th>
+                    <th>ÃèÊö</th>
+                    <th>¼Û¸ñ(3ml)</th>
+                    <th>²Ù×÷</th>
+                </tr>
+            </thead>
+            <tbody id="chemicalsContainer">
+                <!-- »¯Ñ§Æ·Êı¾İ½«Í¨¹ıJavaScript¶¯Ì¬¼ÓÔØ -->
+            </tbody>
+        </table>
         
-        <footer>
-            &copy; 2025 æš—ç½‘æœç´¢å¼•æ“ - ä»…ä¾›å­¦ä¹ ç ”ç©¶ä½¿ç”¨
-        </footer>
+        <div class="cart-section">
+            <h2>ÄãµÄÒâÏò</h2>
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Ãû³Æ</th>
+                        <th>ÊıÁ¿</th>
+                        <th>µ¥¼Û</th>
+                        <th>Ğ¡¼Æ</th>
+       <th>´òÕÛµÄÇë×ÉÑ¯Î¢ĞÅ</th>
+                    </tr>
+                </thead>
+                <tbody id="cartItems">
+                    <!-- ¹ºÎï³µÄÚÈİ½«Í¨¹ıJavaScript¶¯Ì¬¼ÓÔØ -->
+                </tbody>
+            </table>
+            <div class="cart-total" id="cartTotal">
+                ×Ü¼Æ: £¤0.00
+            </div>
+            <button class="checkout-btn" id="checkoutBtn">½áËã</button>
+        </div>
     </div>
-    
+
     <script>
-        // å½“å‰æœç´¢å¼•æ“
-        let currentEngine = 'baidu';
-        
-        // åˆå§‹åŒ–
-        document.addEventListener('DOMContentLoaded', function() {
-            // æœç´¢å¼•æ“é€‰æ‹©
-            const searchOptions = document.querySelectorAll('.search-option');
-            searchOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    searchOptions.forEach(opt => opt.classList.remove('active'));
-                    this.classList.add('active');
-                    currentEngine = this.dataset.engine;
-                });
-            });
+        // »¯Ñ§Æ·Êı¾İ
+        const chemicals = [
+            {id:1, name:'ÁòËá', formula:'H2SO4', category:'Ëá',description:'×Ô¼ºÌá´¿µÄÅ¨¶È´óÓÚ80%', price:8.00},
+            {id:2, name:'Ï¡ÁòËá', formula:'H2SO4', category:'Ëá', description:'¹¤ÒµÁòËá', price:3.00},
+            {id:3, name:'ÒÒ´¼', formula:'C2H5OH', category:'ÓĞ»úÈÜ¼Á', description:'ÓĞ»úÈÜ¼Á500ml', price:13.00},
+            {id:4, name:'Ï¡ÑÎËá', formula:'HCl', category:'Ëá', description:'´óÓÚµÈÓÚ10%200ml', price:7.00},
+            {id:5, name:'ÏõËá', formula:'HNO3', category:'Ëá', description:'Ñõ»¯ĞÔËá', price:6.00},
+            {id:6, name:'ÒÒËá', formula:'CH3COOH', category:'Ëá', description:'ÈõËá500ml', price:30.00},
+            {id:7, name:'°±Ë®', formula:'NH3OH', category:'¼î', description:'500ml', price:15.00},
+            {id:8, name:'Ì¼ËáÄÆ', formula:'Na?CO?', category:'ÑÎ', description:'¼îĞÔÑÎ500g AR', price:20.00},
+            {id:9, name:'ÂÈ»¯ÄÆ', formula:'NaCl', category:'ÑÎ', description:'Ê³ÑÎ', price:3.00},
+            {id:10, name:'¹ıÑõ»¯Çâ', formula:'H?O?', category:'Ñõ»¯¼Á', description:'Ñõ»¯¼Á3% 100ml', price:5.00},
+            {id:11, name:'±ûÍª', formula:'C?H?O', category:'ÓĞ»úÈÜ¼Á', description:'ÓĞ»úÈÜ¼Á100ml»ò3ml', price:35.00},
+            {id:12, name:'ÁòËáÍ­', formula:'CuSO?', category:'ÑÎ', description:'À¶É«¾§Ìå500g', price:30.00},
+            {id:13, name:'¸ßÃÌËá¼Ø', formula:'KMnO?', category:'Ñõ»¯¼Á', description:'Ç¿Ñõ»¯¼Á3ml', price:20.00},
+            {id:14, name:'ÑÎËá', formula:'HCl', category:'Ëá', description:'×ÔÖÆ3ml', price:8.00},
+            {id:15, name:'ÇâÑõ»¯¸Æ', formula:'Ca(OH)?', category:'¼î', description:'ÊìÊ¯»Ò500g', price:20.00},
+            {id:16, name:'ÁòËáÑÇÌú', formula:'FeSO?', category:'ÑÎ', description:'AR·ÖÎö´¿500g', price:20.00},
+            {id:17, name:'¼×´¼', formula:'CH?OH', category:'ÓĞ»úÈÜ¼Á', description:'È¼ÁÏ500ml', price:25.00},
+            {id:18, name:'ÂÈ»¯¼Ø', formula:'KCL', category:'¶¾Ò©', description:'¶¾Ò©500g ¿ÉÑ¡´¿¶È', price:25.00},
+            {id:19, name:'ÒÒÃÑ', formula:'CH3CH2-O-CH3CH2', category:'ÂéÒ©', description:'3ml»Ó·¢', price:20.00},
+            {id:20, name:'ÆßÑõ»¯¶şÃÌ', formula:'MnO7', category:'Ñõ»¯Îï', description:'Õ¨Ò©3ml', price:28.00}
+        ];
+        // ¹ºÎï³µÊı¾İ
+        let cart = [];
+
+        // äÖÈ¾»¯Ñ§Æ·ÁĞ±í
+        function renderChemicals(filteredChemicals = chemicals) {
+            const container = document.getElementById('chemicalsContainer');
+            container.innerHTML = '';
             
-            // æœç´¢æŒ‰é’®ç‚¹å‡»äº‹ä»¶
-            document.getElementById('search-btn').addEventListener('click', performSearch);
-            
-            // è¾“å…¥æ¡†å›è½¦äº‹ä»¶
-            document.getElementById('search-input').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    performSearch();
-                }
-            });
-            
-            // æŸ¥è¯¢å·¥å…·æŒ‰é’®äº‹ä»¶
-            document.getElementById('ip-btn').addEventListener('click', queryIp);
-            document.getElementById('phone-btn').addEventListener('click', queryPhone);
-            document.getElementById('id-btn').addEventListener('click', queryId);
-            
-            // åŠ è½½æ–°é—»
-            loadNews();
-        });
-        
-        // æ‰§è¡Œæœç´¢
-        function performSearch() {
-            const query = document.getElementById('search-input').value.trim();
-            if (!query) return;
-            
-            let searchUrl;
-            switch(currentEngine) {
-                case 'baidu':
-                    searchUrl = `https://www.baidu.com/s?wd=${encodeURIComponent(query)}`;
-                    break;
-                case 'tor':
-                    searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
-                    // æ³¨æ„: å®é™…Toræœç´¢éœ€è¦é€šè¿‡Toræµè§ˆå™¨è®¿é—®.onionç½‘ç«™
-                    break;
-                case 'ddosi':
-                    searchUrl = `https://ddosi.org/search?q=${encodeURIComponent(query)}`;
-                    break;
-                default:
-                    searchUrl = `https://www.baidu.com/s?wd=${encodeURIComponent(query)}`;
-            }
-            
-            window.open(searchUrl, '_blank');
-        }
-        
-        // åŠ è½½æ–°é—»
-        function loadNews() {
-            // è¿™é‡Œåº”è¯¥æ˜¯ä»ç™¾åº¦è·å–æ–°é—»çš„APIè°ƒç”¨
-            // ç”±äºè·¨åŸŸé™åˆ¶ï¼Œå®é™…åº”ç”¨ä¸­éœ€è¦é€šè¿‡åç«¯ä»£ç†æˆ–ä½¿ç”¨å…è®¸è·¨åŸŸçš„API
-            
-            // æ¨¡æ‹Ÿæ•°æ®
-            const newsContainer = document.getElementById('news-container');
-            newsContainer.innerHTML = '';
-            
-            const mockNews = [
-                { title: 'å…¨çƒç½‘ç»œå®‰å…¨å³°ä¼š2025åœ¨æ—¥å†…ç“¦å¬å¼€', source: 'ç™¾åº¦æ–°é—»' },
-                { title: 'æ–°å‹é‡å­åŠ å¯†æŠ€æœ¯æœ‰æœ›å½»åº•æ”¹å˜ç½‘ç»œå®‰å…¨', source: 'ç™¾åº¦ç§‘æŠ€' },
-                { title: 'æš—ç½‘äº¤æ˜“å¹³å°è¢«å¤šå›½è”åˆå–ç¼”', source: 'ç™¾åº¦ç¤¾ä¼š' },
-                { title: '2025å¹´å…¨çƒäº’è”ç½‘ç”¨æˆ·çªç ´60äº¿', source: 'ç™¾åº¦è´¢ç»' },
-                { title: 'ä¸­å›½å‘å¸ƒæ–°ç‰ˆç½‘ç»œå®‰å…¨æ³•å®æ–½ç»†åˆ™', source: 'ç™¾åº¦æ”¿æ²»' }
-            ];
-            
-            mockNews.forEach(news => {
-                const newsItem = document.createElement('div');
-                newsItem.className = 'news-item';
-                newsItem.innerHTML = `
-                    <h3 class="news-title">${news.title}</h3>
-                    <div class="news-source">æ¥æº: ${news.source}</div>
+            filteredChemicals.forEach(chem => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${chem.name}</td>
+                    <td>${chem.formula}</td>
+                    <td>${chem.category}</td>
+                    <td>${chem.description}</td>
+                    <td>£¤${chem.price.toFixed(2)}</td>
+                    <td><button class="add-to-cart" onclick="addToCart(${chem.id})">¹ºÂò</button></td>
                 `;
-                newsContainer.appendChild(newsItem);
-                
-                // æ·»åŠ ç‚¹å‡»äº‹ä»¶
-                newsItem.querySelector('.news-title').addEventListener('click', function() {
-                    alert(`æ‰“å¼€æ–°é—»è¯¦æƒ…: ${news.title}\n\nå®é™…åº”ç”¨ä¸­è¿™é‡Œä¼šè·³è½¬åˆ°æ–°é—»é¡µé¢`);
-                });
+                container.appendChild(row);
             });
         }
-        
-        // æŸ¥è¯¢IPå½’å±åœ°
-        function queryIp() {
-            const ip = document.getElementById('ip-input').value.trim();
-            if (!ip) {
-                alert('è¯·è¾“å…¥IPåœ°å€');
+
+        // Ìí¼Óµ½¹ºÎï³µ
+        function addToCart(id) {
+            const chemical = chemicals.find(c => c.id === id);
+            const existingItem = cart.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: chemical.id,
+                    name: chemical.name,
+                    price: chemical.price,
+                    quantity: 1
+                });
+            }
+            
+            renderCart();
+        }
+
+        // äÖÈ¾¹ºÎï³µ
+        function renderCart() {
+            const container = document.getElementById('cartItems');
+            const totalElement = document.getElementById('cartTotal');
+            
+            container.innerHTML = '';
+            
+            let total = 0;
+            cart.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.quantity}</td>
+                    <td>£¤${item.price.toFixed(2)}</td>
+                    <td>£¤${(item.price * item.quantity).toFixed(2)}</td>
+                `;
+                container.appendChild(row);
+                total += item.price * item.quantity;
+            });
+            
+            totalElement.textContent = `×Ü¼Æ: £¤${total.toFixed(2)}`;
+        }
+
+        // ½áËã
+        document.getElementById('checkoutBtn').addEventListener('click', function() {
+            if (cart.length === 0) {
+                alert('¹ºÎï³µÎª¿Õ£¬ÇëÏÈÌí¼ÓÉÌÆ·');
                 return;
             }
             
-            // ä½¿ç”¨ip-api.comçš„API
-            const resultDiv = document.getElementById('ip-result');
-            resultDiv.style.display = 'block';
-            resultDiv.innerHTML = '<p>æŸ¥è¯¢ä¸­...</p>';
-            
-            fetch(`https://ip-api.com/json/${ip}?lang=zh-CN`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'success') {
-                        resultDiv.innerHTML = `
-                            <p>IP: ${ip}</p>
-                            <p>å›½å®¶: ${data.country}</p>
-                            <p>åœ°åŒº: ${data.regionName}</p>
-                            <p>åŸå¸‚: ${data.city}</p>
-                            <p>ISP: ${data.isp}</p>
-                            <p>AS: ${data.as}</p>
-                        `;
-                    } else {
-                        resultDiv.innerHTML = `<p>æŸ¥è¯¢å¤±è´¥: ${data.message || 'æœªçŸ¥é”™è¯¯'}</p>`;
-                    }
-                })
-                .catch(error => {
-                    resultDiv.innerHTML = `<p>æŸ¥è¯¢å¤±è´¥: ${error.message}</p>`;
-                });
+            alert(`ÒâÏòÒÑÌá½»£¡×Ü½ğ¶î: £¤${calculateTotal().toFixed(2)}Ïë¹ºÂòÇë×ÉÑ¯Î¢ĞÅ£ºJoey862`);
+            cart = [];
+            renderCart();
+        });
+
+        // ¼ÆËã×Ü¼Û
+        function calculateTotal() {
+            return cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
         }
-        
-        // æŸ¥è¯¢ç”µè¯å·ç 
-        function queryPhone() {
-            const phone = document.getElementById('phone-input').value.trim();
-            if (!phone) {
-                alert('è¯·è¾“å…¥ç”µè¯å·ç ');
-                return;
-            }
+
+        // ËÑË÷ºÍÉ¸Ñ¡
+        document.getElementById('searchInput').addEventListener('input', filterChemicals);
+        document.getElementById('categoryFilter').addEventListener('change', filterChemicals);
+
+        function filterChemicals() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const category = document.getElementById('categoryFilter').value;
             
-            // ä½¿ç”¨èšåˆæ•°æ®çš„API
-            const resultDiv = document.getElementById('phone-result');
-            resultDiv.style.display = 'block';
-            resultDiv.innerHTML = '<p>æŸ¥è¯¢ä¸­...</p>';
+            const filtered = chemicals.filter(chem => {
+                const matchesSearch = chem.name.toLowerCase().includes(searchTerm) || 
+                                     chem.formula.toLowerCase().includes(searchTerm);
+                const matchesCategory = !category || chem.category === category;
+                return matchesSearch && matchesCategory;
+            });
             
-            // æ³¨æ„: å®é™…åº”ç”¨ä¸­éœ€è¦æ›¿æ¢ä¸ºæœ‰æ•ˆçš„API key
-            const apiKey = 'YOUR_JUHE_API_KEY';
-            fetch(`http://apis.juhe.cn/mobile/get?phone=${phone}&key=${apiKey}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.error_code === 0) {
-                        resultDiv.innerHTML = `
-                            <p>å·ç : ${phone}</p>
-                            <p>çœä»½: ${data.result.province}</p>
-                            <p>åŸå¸‚: ${data.result.city}</p>
-                            <p>åŒºå·: ${data.result.areacode}</p>
-                            <p>é‚®ç¼–: ${data.result.zip}</p>
-                            <p>è¿è¥å•†: ${data.result.company}</p>
-                            <p>å¡ç±»å‹: ${data.result.card}</p>
-                        `;
-                    } else {
-                        resultDiv.innerHTML = `<p>æŸ¥è¯¢å¤±è´¥: ${data.reason || 'æœªçŸ¥é”™è¯¯'}</p>`;
-                    }
-                })
-                .catch(error => {
-                    resultDiv.innerHTML = `<p>æŸ¥è¯¢å¤±è´¥: ${error.message}</p>`;
-                });
+            renderChemicals(filtered);
         }
-        
-        // æŸ¥è¯¢èº«ä»½è¯
-        function queryId() {
-            const id = document.getElementById('id-input').value.trim();
-            if (!id) {
-                alert('è¯·è¾“å…¥èº«ä»½è¯å·ç ');
-                return;
-            }
-            
-            // ä½¿ç”¨wapi.cnçš„API
-            const resultDiv = document.getElementById('id-result');
-            resultDiv.style.display = 'block';
-            resultDiv.innerHTML = '<p>æŸ¥è¯¢ä¸­...</p>';
-            
-            // æ³¨æ„: å®é™…åº”ç”¨ä¸­éœ€è¦æ›¿æ¢ä¸ºæœ‰æ•ˆçš„API key
-            const apiKey = 'YOUR_WAPI_API_KEY';
-            fetch(`https://www.wapi.cn/api/icard?id=${id}&key=${apiKey}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 200) {
-                        resultDiv.innerHTML = `
-                            <p>èº«ä»½è¯å·: ${id}</p>
-                            <p>æ‰€å±åœ°åŒº: ${data.data.area}</p>
-                            <p>å‡ºç”Ÿæ—¥æœŸ: ${data.data.birthday}</p>
-                            <p>æ€§åˆ«: ${data.data.sex === 'M' ? 'ç”·' : 'å¥³'}</p>
-                        `;
-                    } else {
-                        resultDiv.innerHTML = `<p>æŸ¥è¯¢å¤±è´¥: ${data.message || 'æœªçŸ¥é”™è¯¯'}</p>`;
-                    }
-                })
-                .catch(error => {
-                    resultDiv.innerHTML = `<p>æŸ¥è¯¢å¤±è´¥: ${error.message}</p>`;
-                });
-        }
+
+        // ³õÊ¼»¯Ò³Ãæ
+        renderChemicals();
     </script>
 </body>
 </html>
+×îĞÂÕ¨Ò©ÑĞ¾¿
+1.ÆßÑõ»¯¶şÃÌ<br>
+
+ÆßÑõ»¯¶şÃÌ£¬ÎŞ»ú»¯ºÏÎï£¬»¯Ñ§Ê½Mn2O7£¬ÊÇÒ»ÖÖÇ¿Ñõ»¯¼Á£¬¼ÈÊÇ¸ß¼Û½ğÊôÑõ»¯ÎïÓÖÊÇËáĞÔÑõ»¯Îï¡£<br>
+
+ÖĞÎÄÃûÆßÑõ»¯¶şÃÌ<br>
+ÍâÎÄÃûmanganese heptoxide<br>
+±ğ    Ãû¸ßÃÌËáôû<br>
+»¯Ñ§Ê½Mn?O?<br>
+·Ö×ÓÁ¿221.87<br>
+CASµÇÂ¼ºÅ12057-92-0<br>
+ÈÛ    µã5.9 ¡æ<br>
+·Ğ    µã59 ¡æ<br>
+Ë®ÈÜĞÔÓëË®·´Ó¦Éú³É¸ßÃÌËá<br>
+ÃÜ    ¶È2.79 g/cm3<br>
+Íâ    ¹ÛÄ«ÂÌÉ«ÓÍ×´ÒºÌå<br>
+Ó¦    ÓÃÓÃÓÚ²â¶¨ºÏ¿óÊ¯»ò¹èËáÑÎÖĞÌúµÄº¬Á¿<br>
+Î£ÏÕĞÔ·ûºÅO:Oxidizing agent Ñõ»¯¼ÁC:Corrosive¸¯Ê´ĞÔ<br>
+Î£ÏÕĞÔÊÜÈÈ±¬Õ¨·Ö½â£¬ÓöÓĞ»úÎïÒ×È¼<br>
+Ä¿Â¼<br>
+1Àí»¯ĞÔÖÊ<br>
+?ÎïÀíĞÔÖÊ<br>
+2ÖÆÈ¡·½·¨<br>
+3²úÆ·ÓÃÍ¾<br>
+Àí»¯ĞÔÖÊ<br>
+²¥±¨<br>
+±à¼­<br>
+»¯Ñ§ĞÔÖÊ<br>
+1.Mn2O7ÓöÓĞ»úÎï¼´È¼ÉÕ£¬ÊÜÈÈ±¬Õ¨·Ö½â£¬³£ÎÂÏÂ»ºÂı·Å³öÑõÆø×ª»¯Îª¶şÑõ»¯ÃÌ£¬·Ö½âÊ±Ò²»á²úÉúÉÙÁ¿³ôÑõ£º<br>
+3Mn2O7--59¡æ--£¾6MnO2+ 3O2¡ü+O3¡ü<br>
+2.³£ÎÂÏÂÔÚ¸ÉÔï¿ÕÆøÖĞÎÈ¶¨¡£ÓöÇâÆø»òÓĞ»úÎï¿É×Å»ğ»ò±¬Õ¨¡£ÈÜÓÚ´×ôû¶øĞÎ³É×ÏÉ«ÈÜÒº¡£<br>
+3.ÓëË®·´Ó¦Éú³É¸ßÃÌËá£ºMn2O7+H2O¡ú2HMnO4<br>
+4.²»ÎÈ¶¨ĞÔ¡£<br>
+5.Óë´ó¶àÓĞ»úÎï·¢Éú±¬Õ¨·´Ó¦¡£<br>
+6.¹âÕÕÏÂºÍCCl4·´Ó¦£¬²úÉú¹âÆø¡£<br>
+7.Ò×³±½â¡£<br>
+8.ÓĞÇ¿Ñõ»¯ĞÔ¡£<br>
+9.ÔÚÅ¨ÁòËáÖĞÉú³ÉMnO3+Àë×Ó£º<br>
+Mn2O7+3H2SO4?2MnO3++H3O++3HSO4-<br>
+Mn2O7+14HCl ¡ú 2MnCl2+5Cl2¡ü+7H2O<br>
+
+¾§ÌåµÄÆßÑõ»¯¶şÃÌ³Ê°µ×ÏÉ«¡£ÔÚ·´Éä¹âÏÂËü³ÊÂÌÉ«£»¶øÔÚÍ¸Éä¹âÏÂ³ÊºìÉ«¡£ÄÜÈÜÓÚËÄÂÈ»¯Ì¼£¬ÓëË®½Ó´¥Ê±·´Ó¦¡£ÔÚ5.9 ¡ãCÊ±ÆßÑõ»¯¶şÃÌ¼´ÈÛ»¯£¬Æä¹ÌÌ¬ÔÚ?10¡æÊ±Éı»ª¡£ÕâĞ©ĞÔÖÊ¶¼±íÃ÷ÆßÑõ»¯¶şÃÌ´æÔÚ·Ç¼«ĞÔ¼ü£¬ÕâÔÚºóÀ´±»Æä½á¹¹ËùÖ¤Êµ¡£ÆßÑõ»¯¶şÃÌµÄ·Ö×ÓÓÉÒ»¶Ô¹²ÓÃ¶¥µãµÄËÄÃæÌå½á¹¹¹¹³É¡£ËÄÃæÌåµÄ¶¥µãÎªÑõÔ­×Ó£¬¶øÆäÖĞĞÄÎªÁ½¸öÆß¼ÛµÄÃÌÔ­×Ó¡£½á¹¹¼òÊ½O3Mn-O-MnO3¿ÉÒÔÌåÏÖ³öÆä·Ö×ÓµÄÁ¬Í¨ĞÔ¡£·Ö×ÓÄ©¶ËµÄMn-O¼ü³¤1.585?£¬¶øÆğÁ¬½Ó×÷ÓÃµÄÑõÔ­×Ó¾àÁ½¸öÃÌÔ­×Ó¾ùÎª1.77 ?¡£Mn?O?Mn¼üÖ®¼äµÄ½Ç¶ÈÎª120.7¡ã¡£
+ÔÚÆßÑõ»¯¶şÃÌÖĞ£¬ÃÌÔªËØÏÔ×î¸ß»¯ºÏ¼Û+7¼Û¡£<br>
+ÓëÆßÑõ»¯¶şÃÌÒ»Ñù£¬½¹ÁòËá¸ùÀë×Ó¡¢½¹Á×Ëá¸ùÀë×ÓºÍÖØ¸õËá¸ùÀë×ÓµÈ¶¼ÓĞÀàËÆµÄ½á¹¹£¬¶øÆäÖĞ×îÎªÏàËÆµÄÎªÆßÑõ»¯¶şÂÈ¡£<br>
+
+ÔÚÒ»¶¨²Ù×÷Ìõ¼şÏÂ£¬¿ÉÓÃÀäµÄÅ¨ÁòËáºÍKMnO4·ÛÄ©·´Ó¦×°ÖÃ£¬ÓÉ¸ßÃÌËá¼ØÓëÅ¨ÁòËá·´Ó¦ÖÆµÃ£º [1]
+4KMnO4+10H2SO4-----------£¾Mn2O7+2[MnO3]HSO4+4KHSO4+7H2O<br>
+
+³£ÓÃÓÚ²â¶¨ºÏ½ğ¡¢¿óÊ¯¡¢ÑÎÀà»ò¹èËáÑÎÖĞÌúµÄº¬Á¿µÈ¡£<br>
+
+2.Èı¹ıÑõ»¯Èı±ûÍª<br>
+Èı¹ıÑõ»¯Èı±ûÍª£¨Triacetone triperoxide£¬¼ò³ÆTATP£©£¬ÓÖ³Æ¡°ìØÕ¨Ò©¡±£¬ÊÇÒ»ÖÖÓĞ»ú»¯ºÏÎï£¬»¯Ñ§Ê½ÎªC9H18O6£¬·Ö×ÓÎª»·ĞÎ½á¹¹£¬ÎªÂÔ´øËáÎ¶µÄ°×É«¾§Ìå£¬²»ÈÜÓÚË®£¬¼«Ò×±¬Õ¨¡£
+°Ù¿ÆÍ¼Æ×<br>
+Èı¹ıÑõ»¯Èı±ûÍª<br>
+ÓĞ»ú»¯ºÏÎï<br>
+Èı¹ıÑõ»¯Èı±ûÍª<br>
+Ö¬ÔÓ»·»¯ºÏÎï<br>
+ÔÓ»·»¯ºÏÎï<br>
+»·Ñõ±ûÍé<br>
+²é¿´¸ü¶à<br>
+ÖĞÎÄÃûÈı¹ıÑõ»¯Èı±ûÍª<br>
+ÍâÎÄÃûTriacetone triperoxide£¨TATP£©<br>
+±ğ    ÃûìØÕ¨Ò©¡¢Èı±ûÍªÈı¹ıÑõ»¯Îï<br>
+»¯Ñ§Ê½C9H18O6<br>
+·Ö×ÓÁ¿222.236<br>
+CASµÇÂ¼ºÅ17088-37-8<br>
+ÈÛ    µã91 ¡æ<br>
+·Ğ    µã184.9 ¡æ<br>
+Ë®ÈÜĞÔ²»ÈÜ<br>
+ÃÜ    ¶È1.005 g/cm3<br>
+Íâ    ¹Û°×É«¾§Ìå<br>
+ÉÁ    µã51.5 ¡æ<br>
+Ä¿Â¼<br>
+1»ù±¾ĞÅÏ¢<br>
+2Àí»¯ĞÔÖÊ<br>
+?ÎïÀíĞÔÖÊ<br>
+?»¯Ñ§ĞÔÖÊ<br>
+»ù±¾ĞÅÏ¢<br>
+²¥±¨<br>
+TATPÔÚ1895ÄêÓÉ»¯Ñ§¼ÒRichard Wolffenstein·¢Ã÷£¬ËûÊÇµÚÒ»¸öÓÃÎŞ»úËá×÷´ß»¯¼ÁµÄ»¯Ñ§¼Ò£¬Ò²ÊÇµÚÒ»¸öÒòÓÃ¹ıÑõ»¯ÇâºÏ³ÉÕ¨Ò©¶ø»ñµÃ×¨ÀûµÄÑĞ¾¿Õß¡£
+ÕâÖÖÕ¨Ò©¼«ÎªÃô¸Ğ£¬ÇáÎ¢Ä¦²Á»òÎÂ¶ÈÉÔ¸ß¼´»á±¬Õ¨¡£ÊÇ2005ÄêÓ¢¹ú7¡¤7±¬Õ¨°¸µÄÖ÷½Ç¡£ËüÔÚ±¬Õ¨Ê±²¢²»»á²úÉúÈÎºÎ»ğÑæ¡£ÒòÎªÖ»ĞèºÜÉÙµÄÄÜÁ¿¾Í¿ÉÒı·¢Õ¨Ò©±¬Õ¨¡£ÇÒÕâ¸ö¹ı³ÌÊÇÒ»¸ö·Ö½â¹ı³Ì¡£ÔÚÕâ¸ö¹ı³ÌÖĞ£¬TATP·Ö×ÓÊÍ·Å³ö±ûÍª£¬Ê¹ÁªÔÚÒ»ÆğµÄÑõÔ­×ÓÉ¢¿ª£¬ĞÎ³ÉÑõÆøºÍ³ôÑõ¡£Õâ¸ö¹ı³ÌÊÍ·Å³öµÄÄÜÁ¿×ã¿ÉÊ¹ÁíÒ»¸ö·Ö×Ó·¢Éú»¯Ñ§·´Ó¦£¬Î¬³ÖÁË·´Ó¦µÄÁ¬Ğø·¢Éú¡£Ò»¸öTATP·Ö×Ó¿ÉÒÔÉú³ÉËÄ¸öÆøÌå·Ö×Ó£¬Õâ¾ÍÊÇÎªÊ²Ã´TATP»á·¢Éú±¬Õ¨µÄÔ­Òò¡£ÔÚ²»µ½Ò»ÃëÖÓÄÚ£¬½ö¼¸°Ù¿ËµÄTATP¾Í¿É²úÉú³É°ÙÉÏÇ§ÉıÆøÌå¡£
+Ëü²»Í¬ÓÚ³£¹æÕ¨Ò©¡£ÊÇÒ»ÖÖĞÔÖÊÌØÊâµÄÕ¨Ò©£¬µ±È»ÓĞÕâÖÖÌØĞÔµÄÕ¨Ò©²¢·ÇÖ»TATPÕâÒ»ÖÖÎïÖÊ£¬ÀıÈçµşµª»¯ÎïÔÚÆä·¢Éú»¯Ñ§·Ö½â·´Ó¦Ê±»áÉú³É´óÁ¿µªÆø£¬µ«Ö»²úÉúºÜÉÙµÄÈÈÁ¿¡£ÈËÃÇÀûÓÃµşµª»¯ÎïµÄÕâÖÖĞÔÖÊ½«ËüÓÃ×öÆû³µÉÏµÄ°²È«ÆøÄÒÖĞ¡£
+TATP²»º¬µªÔªËØ£¬ÄÜÇáËÉÍ¨¹ıºÜ¶àÕ¨Ò©Ì½²âÆ÷µÄ¼ì²â£¬ÕâÒ²³ÉÁËº½°²ÉÏ½ûÖ¹Ğ¯´øÒºÌåÉÏ·É»úµÄÖ÷ÒòÖ®Ò»¡£2g×óÓÒÒÔÏÂµÄTATPÔÚ¿ª·ÅÌõ¼şÏÂ¿ÉÒÔÈ¼ÉÕ£¬2gÒÔÉÏµÄTATPÍ¨³£»á±¬Õ¨£¬½ÏĞ¡ÖÊÁ¿µÄÉõÖÁ»áÔÚÇáÎ¢ÃÜ±ÕµÄÌõ¼şÏÂ±¬Õ¨¡£ÍêÈ«¸ÉÔïµÄTATP±ÈĞÂÖÆµÄ£¬»¹º¬ÓĞ±ûÍªºÍË®µÄ¸üÈİÒ×±¬Õ¨¡£
+Àí»¯ĞÔÖÊ<br>
+²¥±¨<br>
+ÎïÀíĞÔÖÊ<br>
+ÃÜ¶È£º1.005g/cm3<br>
+ÈÛµã£º91¡æ
+·Ğµã£º184.9¡æ
+ÉÁµã£º51.5¡æ
+ÕÛÉäÂÊ£º1.382<br>
+ÕôÆûÑ¹£º0.98mmHg at 25¡ãC<br>
+Íâ¹Û£º°×É«¾§Ìå<br>
+ÈÜ½âĞÔ£º²»ÈÜÓÚË®<br>
+»¯Ñ§ĞÔÖÊ<br>
+ÓöÈÈÊÜ×²»÷·¢Éú±¬Õ¨ĞÔ·Ö½â£¬È¼ÉÕÊ±µÄ·´Ó¦Îª£º<br>
+2C9H18O6+21O2===18H2O+18CO2
+ÊÜ×²»÷Ê±µÄ·´Ó¦1£º<br>
+2C9H18O6===O3+3C3H6O
+ÊÜ×²»÷Ê±µÄ·´Ó¦2£º<br>
+2C9H18O6===3O2+6C3H6O
+3.TNT<br>
+ÈıÏõ»ù¼×±½<br>
+²¥±¨<br>
+Ëø¶¨<br>
+ÌÖÂÛ<br>
+ÉÏ´«ÊÓÆµ<br>
+ÓĞ»ú»¯ºÏÎï<br>
+±¾´ÊÌõÓÉÖĞ¹ú¿ÆÑ§Ôº´óÑ§»¯Ñ§¿ÆÑ§Ñ§Ôº¡¢ÖĞ¹ú¿ÆÑ§Ôº¹ı³Ì¹¤³ÌÑĞ¾¿Ëù ²ÎÓë±à¼­²¢ÉóºË£¬¾­¿ÆÆÕÖĞ¹ú¡¤¿ÆÑ§°Ù¿ÆÈÏÖ¤ ¡£
+ÈıÏõ»ù¼×±½£¬ÓÖÃû2,4,6-ÈıÏõ»ù¼×±½£¨Ó¢ÎÄ£ºTrinitrotoluene£¬ËõĞ´£ºTNT£©£¬ÊÇÒ»ÖÖÓĞ»ú»¯ºÏÎï£¬»¯Ñ§Ê½ÎªC7H5N3O6£¬Îª°×É«»ò»ÆÉ«Õë×´½á¾§£¬ÎŞ³ô£¬ÓĞÎüÊªĞÔ£¬ÊÇÒ»ÖÖ±È½Ï°²È«µÄÕ¨Ò©£¬ÄÜÄÍÊÜ×²»÷ºÍÄ¦²Á£¬µ«ÈÎºÎÁ¿Í»È»ÊÜÈÈ¶¼ÄÜÒıÆğ±¬Õ¨¡£ÖĞµÈ¶¾ĞÔ¡£¿É¾­Æ¤¡¢ºôÎüµÀ¡¢Ïû»¯µÀÇÖÈë¡£ÓÉ¼×±½¾­Ïõ»¯ÖÆ³É£¬ÈÛµãÎª354 K£¨80.9¡ãC£© [1]¡£³Ê×ØÉ«¾§Ìå×´£¨´¿Æ·ÎªÇ³»ÆÉ«¾§Ìå£©¡£Ò×Óë¿àÎ¶Ëá»ìÏı£¬±»Îó³ÆÎª¡°»ÆÉ«Õ¨Ò©¡±¡£ºÍÏõËáï§»ìºÏ¿É³ÉÎª°¢ÂíÍĞÕ¨Ò©¡£
+ÓëÏõ»¯¸ÊÓÍ²»Í¬£¬¾«Á¶µÄÈıÏõ»ù¼×±½¶ÔÓÚÄ¦²Á¡¢Õğ¶¯¶¼Ê®·ÖÎÈ¶¨¡£¼´Ê¹±»Ç¹»÷£¬Ò²²»Ò×±¬Õ¨¡£ËüĞèÒªÀ×¹ÜÒı±¬¡£TNT²»»áÓë½ğÊôÆğ»¯Ñ§×÷ÓÃ»òÕßÎüÊÕË®·Ö¡£Òò´ËËü¿ÉÒÔ´æ·Å¶àÄê¡£µ«ËüÓë¼îÇ¿ÁÒ·´Ó¦£¬Éú³É²»ÎÈ¶¨µÄ»¯ºÏÎï¡£
+Ã¿¿ËTNTÕ¨Ò©¿É²úÉú4200½¹¶úµÄÄÜÁ¿£¨4.2MJ/kg£© [2]¡£ËäÈ»ÈıÏõ»ù¼×±½µÄÄÜÁ¿ÃÜ¶È±ÈÖ¬·¾£¨38MJ/kg£©ºÍÌÇ£¨17MJ/kg£©Ğ¡£¬µ«ËüµÄ·Ö×ÓÖĞÓĞÈı¸öÏõ»ù×÷ÎªÑõ»¯¼Á£¬²»ĞèÒª´óÆøÖĞµÄÑõÆø£¬ËùÒÔÒı±¬Ê±»á²úÉú´óÁ¿ÆøÌå£¬²úÉú±¬Õ¨¡£ÏÖ½ñÓĞ¹Ø±¬Õ¨ºÍÄÜÁ¿ÊÍ·ÅµÄÑĞ¾¿£¬Ò²³£³£ÓÃ¡°¹«½ïTNT¡±»ò¡°¶ÖTNT¡±×÷Îªµ¥Î»£¬ÒÔ±È½Ï±¬Õ¨¡¢µØÕğ¡¢ĞĞĞÇ×²»÷µÈ´óĞÍ·´Ó¦Ê±ËùÊÍ³öµÄÄÜÁ¿¡£
+ÈıÏõ»ù¼×±½µÄÖ÷ÒªÎ£º¦ÊÇÂıĞÔÖĞ¶¾¡£¾Ö²¿Æ¤·ô´Ì¼¤²úÉúÆ¤Ñ×ºÍ»ÆÈ¾¡£¸ßÌúÑªºìµ°°×ĞÎ³ÉÄÜÁ¦Ô¶½Ï±½°·ÎªĞ¡¡£ÂıĞÔ×÷ÓÃÖ÷Òª±íÏÖÎªÖĞ¶¾ĞÔÎ¸Ñ×¡¢ÖĞ¶¾ĞÔ¸ÎÑ×¡¢ÔÙÕÏ¡¢Æ¶Ñª¡¢ÖĞ¶¾ĞÔ°×ÄÚÕÏ¡£
+2017Äê10ÔÂ27ÈÕ£¬ÊÀ½çÎÀÉú×éÖ¯¹ú¼Ê°©Ö¢ÑĞ¾¿»ú¹¹¹«²¼µÄÖÂ°©ÎïÇåµ¥³õ²½ÕûÀí²Î¿¼£¬2,4,6-ÈıÏõ»ù¼×±½ÔÚ3ÀàÖÂ°©ÎïÇåµ¥ÖĞ [3]¡£
+°Ù¿ÆÍ¼Æ×<br>
+ÈıÏõ»ù¼×±½<br>
+ÓĞ»ú»¯ºÏÎï<br>
+ÈıÏõ»ù¼×±½<br>
+Ïõ»ù»¯ºÏÎï<br>
+ÓĞ»úº¬µª»¯ºÏÎï<br>
+2-Ïõ»ù¼×±½<br>
+²é¿´¸ü¶à<br>
+ÖĞÎÄÃûÈıÏõ»ù¼×±½<br>
+ÍâÎÄÃûTrinitrotoluene£¨TNT£©<br>
+±ğ    Ãû2,4,6-ÈıÏõ»ù¼×±½<br>
+»¯Ñ§Ê½C7H5N3O6<br>
+·Ö×ÓÁ¿227.131<br>
+CASµÇÂ¼ºÅ118-96-7<br>
+EINECSµÇÂ¼ºÅ204-289-6<br>
+ÈÛ    µã80.9 ¡æ<br>
+·Ğ    µã240 ¡æ£¨·Ö½â£©<br>
+Ë®ÈÜĞÔ²»ÈÜ<br>
+ÃÜ    ¶È1.654 g/cm3<br>
+Íâ    ¹Û°×É«»ò»ÆÉ«Õë×´¾§Ìå<br>
+ÉÁ    µã223.6 ¡æ<br>
+°²È«ĞÔÃèÊöS26£»S36/37<br>
+Î£ÏÕĞÔÃèÊöR1£»R11£»R20/21/22£»R36<br>
+UNÎ£ÏÕ»õÎï±àºÅ1356<br>
+1.5Íò²¥·Å<br>
+04:43<br>
+TNTÕ¨Ò©±¬Õ¨ÍşÁ¦ÓĞ¶à´ó£¬Ò»ÆğÀ´¿´ÏÖ³¡ÊÔÑé£ü¾üÎäÁã¾àÀë<br>
+Ä¿Â¼<br>
+1·¢Õ¹ÀúÊ·<br>
+2ÎïÖÊĞÔÖÊ<br>
+?Àí»¯ĞÔÖÊ<br>
+?·Ö×Ó½á¹¹Êı¾İ<br>
+?¼ÆËã»¯Ñ§Êı¾İ<br>
+3¶¾Àí<br>
+4ÁÙ´²<br>
+?ÂıĞÔÖĞ¶¾<br>
+5Ô¤·À<br>
+?½Ó´¥¿ØÖÆ<br>
+?¾ÍÒµ½û¼ÉÕ÷<br>
+?¸öÈË·À»¤¼°×÷Òµ·À»¤<br>
+6»·¾³Ó°Ïì<br>
+8Ó¦¼±´¦Àí<br>
+?Ğ¹Â©Ó¦¼±´¦Àí<br>
+?·À»¤´ëÊ©<br>
+?¼±¾È´ëÊ©<br>
+9°²È«ĞÅÏ¢<br>
+?°²È«ÊõÓï<br>
+?·çÏÕÊõÓï<br>
+·¢Õ¹ÀúÊ·<br>
+²¥±¨<br>
+TNTÓÉµÂ¹ú»¯Ñ§¼ÒÖìÀûÒ¶Ë¹¡¤Íş¶ûÀ¼µÂÓÚ1863ÄêÊ×´ÎÖÆ±¸ [4]£¬×î³õ±»ÓÃ×÷»ÆÉ«È¾ÁÏ¡£TNT×÷ÎªÕ¨Ò©µÄÇ±ÔÚ×÷ÓÃÔÚ30ÄêÄÚ¶¼Î´±»·¢ÏÖ£¬Ö÷ÒªÊÇÒòÎªËü±ÈÆäËûÌæ´úÆ·¸ü²»Ãô¸Ğ£¬ËùÒÔÄÑÒÔÒı±¬¡£Æä±¬Õ¨ÌØĞÔÓÉÁíÒ»Î»µÂ¹ú»¯Ñ§¼ÒCarl H?ussermannÓÚ1891ÄêÊ×´Î·¢ÏÖ [5]¡£TNTÔÚÒºÌå×´Ì¬ÏÂ¿ÉÒÔ±»°²È«µØ×¢Èëµ¯¿ÇÖĞ£¬¶øÇÒÓÉÓÚ·Ç³£²»Ãô¸Ğ£¬Æä²»ÊÜÓ¢¹ú¡¶1875Äê±¬Õ¨Îï·¨°¸¡·µÄÔ¼Êø£¬ÇÒÔÚÖÆÔìºÍ´¢´æÊ±²»±»ÊÓÎª±¬Õ¨Îï [6]¡£
+1902Äê£¬µÂ¾ü²ÉÓÃTNT×÷Îª´óÅÚÅÚµ¯µÄÌî³äÎï¡£Ê¹ÓÃTNTÌî³äµÄ´©¼×µ¯ÔÚ»÷´©Ó¢¾üÖ÷Á¦½¢µÄ×°¼×ºó»á±¬Õ¨£¬È»¶øÓ¢¾üÊ¹ÓÃLydditeÌî³äµÄÅÚµ¯È´ÍùÍù»áÔÚ×²»÷×°¼×Ç°±¬Õ¨£¬µ¼ÖÂ´ó²¿·ÖÄÜÁ¿ÔÚ½¢Íâ±»ÏûºÄ [5]¡£1907Äê£¬Ó¢¾üÒ²¿ªÊ¼Ê¹ÓÃTNTÈ¡´úLyddite [7]¡£
+´ËÍâ£¬A¼¶TNT»¹±»ÓÃÓÚ¸ß±¬µ¯µÄÌî³ä¡£Ëæ×Å»¯Ñ§¹¤ÒµµÄ·¢Õ¹£¬TNTÖğ½¥³ÉÎªÊ×Ñ¡Õ¨Ò©£¬ÓÈÆäÊÇÔÚ´Ó¼×±½Ô­ÁÏ¼°Ïõ»¯·´Ó¦²úÉúµÄ¸±²úÎïÖĞÈ¥³ı¶ş¼×±½¼°ÀàËÆÌşÀàÎïÖÊºó£¬TNTµÄ´¿¶ÈºÍĞ§ÓÃ½øÒ»²½ÌáÉı [8]¡£
+ÎïÖÊĞÔÖÊ<br>
+²¥±¨<br>
+Àí»¯ĞÔÖÊ<br><br>
+ÃÜ¶È£º1.654g/cm3<br>
+ÈÛµã£º80.9¡æ<br>
+·Ğµã£º240¡æ£¨±¬Õ¨£©<br>
+ÑõÆ½ºâ£º-74.0£¥<br>
+ÕôÆøÑ¹£º0.046mmHg£¨82¡æ£©<br>
+ÈÜ½â¶È£ºÄÑÈÜÓÚË®¡¢ÒÒ´¼¡¢ÒÒÃÑ£¬Ò×ÈÜÓÚÂÈ·Â¡¢±½¡¢¼×±½¡¢±ûÍª<br>
+±¬Õ¨·½³ÌÊ½£º [9]<br>
+·Ö×Ó½á¹¹Êı¾İ<br>
+Ä¦¶ûÕÛÉäÂÊ£º50.71<br>
+Ä¦¶ûÌå»ı£¨cm3/mol£©£º141.2<br>
+µÈÕÅ±ÈÈİ£¨90.2K£©£º411.3<br>
+±íÃæÕÅÁ¦£¨dyne/cm£©£º71.9<br>
+¼«»¯ÂÊ£¨10-24cm3£©£º20.10 [9]<br>
+¼ÆËã»¯Ñ§Êı¾İ<br>
+ÊèË®²ÎÊı¼ÆËã²Î¿¼Öµ£¨XlogP£©£ºÎŞ<br>
+Çâ¼ü¹©ÌåÊıÁ¿£º0<br>
+Çâ¼üÊÜÌåÊıÁ¿£º6v<br>
+¿ÉĞı×ª»¯Ñ§¼üÊıÁ¿£º0<br>
+»¥±äÒì¹¹ÌåÊıÁ¿£º<br>
+ÍØÆË·Ö×Ó¼«ĞÔ±íÃæ»ı£º138<br>
+ÖØÔ­×ÓÊıÁ¿£º16<br>
+±íÃæµçºÉ£º0<br>
+¸´ÔÓ¶È£º292<br>
+Í¬Î»ËØÔ­×ÓÊıÁ¿£º0<br>
+È·¶¨Ô­×ÓÁ¢¹¹ÖĞĞÄÊıÁ¿£º<br>
+²»È·¶¨Ô­×ÓÁ¢¹¹ÖĞĞÄÊıÁ¿£º0<br>
+È·¶¨»¯Ñ§¼üÁ¢¹¹ÖĞĞÄÊıÁ¿£º0<br>
+²»È·¶¨»¯Ñ§¼üÁ¢¹¹ÖĞĞÄÊıÁ¿£º0
+¹²¼Û¼üµ¥ÔªÊıÁ¿£º1 [9]
+¶¾Àí<br>
+²¥<br>
+±©Â¶ÓÚ¿ÕÆøÖĞ¸ßÅ¨¶ÈµÄ2,4,6-ÈıÏõ<br>»ù¼×±½»áµ¼ÖÂ¶àÖÖÓĞº¦µÄ½¡¿µÓ°Ïì£¬°üÀ¨Æ¶ÑªºÍ¸Î¹¦ÄÜÒì³£¡£ÔÚÊ³ÓÃ»òºôÎü2,4,6-ÈıÏõ»ù¼×±½µÄ¶¯ÎïÖĞ¹Û²ìµ½ÀàËÆµÄÑªÒººÍ¸ÎÔàÓ°Ïì£¬ÒÔ¼°Æ¢ÔàÖ×´óºÍÆäËû¶ÔÃâÒßÏµÍ³µÄÓĞº¦Ó°Ïì¡£¶ÔÈËÀàµÄÆäËûÓ°Ïì°üÀ¨³¤Ê±¼äÆ¤·ô½Ó´¥ºóµÄÆ¤·ô´Ì¼¤£¬ÒÔ¼°³¤ÆÚ£¨365 Ìì»ò¸ü³¤Ê±¼ä£©±©Â¶ºó·¢Éú°×ÄÚÕÏ¡£Ä¿Ç°ÉĞ²»Çå³ş2,4,6-ÈıÏõ»ù¼×±½ÊÇ·ñ»áµ¼ÖÂÈËÀà³öÉúÈ±Ïİ¡£È»¶ø£¬ÓÃ¸ß¼ÁÁ¿µÄ2,4,6-ÈıÏõ»ù¼×±½ÖÎÁÆµÄĞÛĞÔ¶¯ÎïÒÑ¾­²úÉúÁËÑÏÖØµÄÉúÖ³ÏµÍ³Ó°Ïì¡£´ËÍâ£¬ÃÀ¹ú»·±£ÊğÒÑÈ·¶¨2,4,6-ÈıÏõ»ù¼×±½¿ÉÄÜÊÇÒ»ÖÖÈËÀàÖÂ°©Îï [10]¡£
+ÈËÌå¶¾ĞÔ£º<br>
+ÈËÔÚ>2mg/m3»·¾³ÖĞ²úÉú²»ÔÃ¸Ğ£¬²¢ÒıÆğÑªÒºµÄÇá¶È¸Ä±ä¡£ÈË¾­¿Ú1mg/kgÁ¬Ğø4ÈÕ£¬Î´¼ûÑªÒº·½Ãæ¸Ä±ä¡£ÈËµÄ¼±ĞÔÖÂËÀÁ¿¹À¼ÆÎª1-2g¡£
+·ÇÈËÌå¶¾ĞÔ£º
+LD50 Ğ¡Êó¿Ú·ş 660 mg/kg¡£
+LD50Ğ¡Êó£¨ĞÛĞÔ£©¿Ú·ş1012ºÁ¿Ë/Ç§¿Ë
+LD50Ğ¡Êó£¨´ÆĞÔ£©¿Ú·ş660ºÁ¿Ë/Ç§¿Ë
+LD50 ´óÊó¿Ú·ş 795 mg/kg [10]¡£
+ÁÙ´²<br>
+²¥±¨<br>
+¼±ĞÔÖĞ¶¾<br>v
+½Ó´¥ÈıÏõ»ù¼×±½ºó¾Ö²¿Æ¤·ôÈ¾³É½Û»ÆÉ«£¬Ô¼Ò»ÖÜ×óÓÒÔÚ½Ó´¥²¿Î»·¢ÉúÆ¤Ñ×£¬±íÏÖÎªºìÉ«ÇğÕî£¬ÒÔºóºóÕîÈÚºÏ²¢ÍÑĞ¼¡£´ó²¿·ÖÈË¼ÌĞø½Ó´¥ÖĞÆ¤ÕîÏûÍË£¬ÉÙÊıÈË²¡ĞÔ¼ÓÖØ¡£¶ÌÆÚÄÚÎüÈë¸ßÅ¨¶ÈÈıÏõ»ù¼×±½·Û³¾£¬¿ÉÔÚÊıÌìºó·¢Éú×Ïç¤¡¢ĞØÃÆ¡¢ºôÎüÀ§ÄÑµÈ¸ßÌúÑªºìµ°°×µÄÑªÖ¢ [10]¡£
+ÂıĞÔÖĞ¶¾
+ÁÙ´²±íÏÖ
+È«ÉíÖ¢×´±íÏÖÎªÃæÉ«²Ô°×£¬¿Ú´½ºÍ¶ú¿Ç³ÊÇà×ÏÉ«µÄ¡°ÈıÏõ»ù¼×±½ÃæÈİ¡±£¬ÓĞÎª·ôÉ«ÑÚ¸Ç£¬²»Ò×ÏÔÂ¶¡£»¹¿ÉÄÜ³öÏÖÆø¼±¡¢Í·Í´¡¢·¦Á¦¡¢ÄÉ¼õ¼°³¿ÆğÅ»ÍÂµÈ±íÏÖ¡£ÁÙ´²ÉÏ¿É·ÖÎªÏÂÁĞËÄÖÖÀàĞÍ£º
+¢ÙÖĞ¶¾ĞÔÎ¸Ñ×£º»¼ÕßÄÉ²î£¬ÉÏ¸¹²¿¾çÍ´£¬¶ñĞÄ¡¢Å»ÍÂ¼°±ãÃØ£¬Óë½øÊ³ÎŞ¹Ø¡£Î¸¾µ·¢ÏÖµ¥´¿ĞÔÎ¸Ñ×¡£
+¢ÚÖĞ¶¾ĞÔ¸ÎÑ×£º½Ó´¥Á¿¶àÕß¶àÔÚ3¸öÔÂÒÔÉÏ·¢Éú¸ÎÖ×´ó°éÑ¹Í´£¬¸Î¹¦ÄÜÒì³£¡£Èç·¢Éú»Æğã£¬Ô¤ºó²»¼Ñ¡£ÍÑÀë½Ó´¥£¬ºÃ×ª½Ï¿ì¡£
+¢ÛÆ¶Ñª£ºÎªµÍÉ«ËØĞÔÆ¶Ñª£¬¿É°éÍø×´Ï¸°ûÔö¶à¡¢Äòµ¨Ô­ºÍÄòµ¨ºìËØÑôĞÔ¡¢ºÕ¶÷×ÈĞ¡ÌåÑôĞÔ¡¢µãĞÎºìÏ¸°ûÔö¼ÓµÈ¡£ÑÏÖØÕß¿É·¢Õ¹ÖÁÔÙÉúÕÏ°­ĞÔÆ¶Ñª£¬±íÏÖÎª½øĞĞĞÔÆ¶Ñª£¬È«ÑªÏ¸°û¼õÉÙÒÔ¼°¹ÇËèÔöÉú²»Á¼¡£
+¢ÜÖĞ¶¾ĞÔ°×ÄÚÕÏ£º·¢ÉúÂÊ×î¸ß£¬·¢²¡Óë¹¤ÁäÒ»°ã³ÉÕı±È¡£¸ö±ğÈË½Ó´¥¸ßÅ¨¶È²»×ãÒ»ÄêÒà¿É·¢²¡¡£³õÆğÊ±¾§×´ÌåÖÜ±ß²¿»·ĞÎ°µÓ°£¬Ëæ²¡Çé·¢Õ¹¿É³öÏÖÖĞÑë²¿»·ĞÎ»òÔ²ÅÌ×´»ì×Ç¡£ÓÉÓÚ°×ÄÚÕÏ³Ê»·×´·Ö²¼£¬¹Ê¶ÔÖĞÑëÊÓÁ¦Ó°Ïì²»´ó [10]¡£
+Õï¶Ï
+¸ù¾İÃÜÇĞµÄÈıÏõ»ù¼×±½Ö°Òµ½Ó´¥Ê·£¬¸ÎÔà²¡±ä¡¢ÑÛ¾§Ìå¸Ä±äºÍÑªÏó¸Ä±äÇé¿ö£¬ÅÅ³ıÆäËû¼²²¡ÒıÆğµÄÉÏÊö¸Ä±ä£¬·½¿ÉÕï¶Ï¡£
+¹Û²ì¶ÔÏó£º³¹ÕÕ·¨¼ì²é£¬¾§ÌåÖÜ±ß²¿ÓĞ»òÎŞµã×´°µÓ°£¬ÁÑÏ¶µÆ¼ì²é£¬¾§ÌåÖÜ±ßÓĞÏ¸µã×´»ì×Ç£¬Æ¤ÖÊÉĞÍ¸Ã÷£»»ò¸ÎÖ×´óÔÚËø¹ÇÖĞÏßÀßÔµÏÂ1.0cmÒÔÄÚ£¬ÖÊµØ¼°¸Î¹¦ÄÜ¾ù¿ÉÒÉ¸Ä±ä£»»òÑªÏóÓĞ¿ÉÒÉ¸Ä±ä¡£
+Çá¶ÈÖĞ¶¾£º¾ß±¸ÏÂÁĞ¶şÖÖÇé¿ö¡£¾§ÌåÖÜ±ß²¿ÓĞ»·×´°µÓ°£¬»ì×Ç·¶Î§²»³¬¹ı¾§Ìå°ë¾¶µÄ1/3»ò2/3£¬ÁÑÏ¶µÆ¼ì²é£¬»ì×ÇÎª»Ò»ÆÉ«Ï¸µã¾Û¼¯¶ø³É£¬Î»ÓÚÇ°ºó¼«ÄÒÏÂÆ¤ÖÊÄÚ£¬Æ¤ÖÊÍ¸Ã÷¶È½µµÍ»òÓĞ³Ì¶È²»µÈµÄÊÓÎïÕÏ°­£»»ò¸ÎÖ×´ó´ïËø¹ÇÖĞÏßÀßÔµÏÂ1.0cmÒÔÉÏ£¬ÖÊÈÍ°é´¥Í´²¢ÓĞ¸Î¹¦ÄÜÒì³££¬¸Î¹¦ÄÜÕı³£Ê±£¬¸ÎÖ×´óĞë´ïÀßÏÂ1.5cm£»»òÆ¶Ñª¡¢ÑªÏ¸°û¼õÉÙ¡£Èç½öÒÔ¸ÎÔà»ò¾§Ìå¸Ä±äÎªÖ÷£¬²¢ÄÜ³ıÍâÆäËû²¡Òò£¬¿ÉÏàÓ¦Õï¶ÏÎªÈıÏõ»ù¼×±½ÖĞ¶¾ĞÔ¸Î²¡»ò°×ÄÚÕÏ¡£
+ÖØ¶ÈÖĞ¶¾£ºÔÚÇá¶ÈÖĞ¶¾»ù´¡ÉÏ£¬³öÏÖÏÂÁĞÇé¿öÖ®Ò»Õß¡£¸ÎÓ²»¯£º»ò¾§ÌåËğº¦´ïµ½ÈıÆÚ¼´ÖÜ±ß²¿»ì×Ç³¬¹ı¾§Ìå°ë¾¶2/3ÒÔÉÏ£¬ÖĞÑë²¿ÓĞÖÂÃÜµã×´»òÅÌ×´»ì×Ç£¬ÊÓÁ¦ºÍÊÓÒ°Ã÷ÏÔÊÜËğ£»»òÔÙÉúÕÏ°­ĞÔÆ¶Ñª [10]¡£
+ÖÎÁÆ
+ÊÊµ±ĞİÏ¢£¬¼ÓÇ¿ÓªÑø£¬²¢Óè¶ÔÖ¢´¦Àí [10]¡£
+ÈıÏõ»ù¼×±½°×ÄÚÕÏÖÎÁÆ
+¢Ù°´°×ÄÚÕÏ³£¹æÖÎÁÆ´¦Àí£º°×ÄÚÕÏÖÎÁÆÒ©Ë®µÎÑÛ£¬ÖĞÒ©ÈçèË¾ÕµØ»ÆÍè¡¢Ê¯õúÒ¹¹âÍèµÈ¿Ú·ş£¬Vit CºÍVit E¿Ú·şÖÎÁÆ¡£
+¢Ú¾§ÌåÍêÈ«»ì×ÇÕß£¬¿ÉÊ©ĞĞ°×ÄÚÕÏÕª³ıÊõ£¬Êõºó×ÃÇéÅä½ÃÕıÑÛ¾µ£¬ÓĞÌõ¼şÕß¿ÉĞĞÈË¹¤¾§ÌåÖ²ÈëÊõ [10]¡£
+ÖĞ¶¾ĞÔ¸Î²¡ÖÎÁÆ
+¢ÙÍÑÀëÈıÏõ»ù¼×±½½Ó´¥
+¢Ú¶ÔÖ¢ºÍÖ§³ÖÁÆ·¨£ºÎÔ´²ĞİÏ¢£¬½øÊ³ÓªÑø·á¸»Ò×Ïû»¯Ê³Îï£¬¾²Âö²¹³äÆÏÌÑÌÇºÍÎ¬ÉúËØC£»±£¸ÎÒ©ÎïµÄÊ¹ÓÃ£¬Èç¸ÎÌ«ËØ0.2gtid£¬VitBcoÃ¿´Î2Æ¬tid£¬CpA100u¼¡×¢qd£¬CoR10 20mgtid£¬ATP40mg¼¡×¢qd¡£±ØÒªÊ±¿ÉÓèGIK»òFDP¾²ÂöµÎ×¢¡£
+¢ÛÖØÖ¢ÕßÓ¦ÓÃÌÇÆ¤ÖÊ¼¤ËØ£ºÇâ»¯¿ÉµÄËÉ200-400mg/d¾²µÎ£¬±ØÒªÊ±ÊäÑªºÍÈËÌåÑªµ°°× [10]¡£
+ÔÙÉúÕÏ°­ĞÔÆ¶ÑªÖÎÁÆ
+¢ÙÍÑÀëÈıÏõ»ù¼×±½½Ó´¥¡£
+¢ÚĞÛ¼¤ËØÓ¦ÓÃ£º¿µµ¶Áú2mg tid£¬±ûËáØºÍèÍª50-100mg¼¡×¢qd£¬ÁÆ³Ì3¡«6¸öÔÂ¡£ÖÎÁÆÖĞ×¢Òâ¸Î¹¦ÄÜ¡£
+¢ÛÌÇÆ¤ÖÊ¼¤ËØµÄÊ¹ÓÃ£ºÇ¿µÄËÉ100g tid£»Çâ»¯¿ÉµÄËÉ200¡«300g¾²µÎÒÔ¼õÇá³öÑªÇãÏòºÍÒÖÖÆ¼±ĞÔ·´Ó¦¡£
+¢ÜÔ¤·ÀºÍ¿ØÖÆ¸ĞÈ¾¡£
+¢İ±ØÒªÊ±ÊäÑª¡£ÓĞÌõ¼şÊ±¿ÉĞĞ¹ÇËèÒÆÖ² [10]¡£
+Ô¤·À
+²¥±¨
+½Ó´¥¿ØÖÆ
+¢Ù¹¤ÒÕ¸Ä¸ï£ºÔÚÈıÏõ»ù¼×±½µÄ»ìºÍ¡¢×°ÁÏµÈ¹¤ĞòÓ¦ÓèÃÜ±Õ£¬²ÉÈ¡×Ô¶¯»¯²Ù×÷²¢ÉèÖÃ¾Ö²¿Í¨·ç¡£
+¢Ú×ñÊØ°²È«²Ù×÷¹æ³Ì£º¾¡Á¿¼õÉÙÆ¤·ôµÄ½Ó´¥¡£
+¢Û¶¨ÆÚ¼ìĞŞ£ºÉú²úÉè±¸Ó¦¶¨ÆÚÎ¬ĞŞ£¬¾¡¿ÉÄÜ½µµÍ·ÛÄ©ºÍÕôÆøµÄÅ¨¶È¡£
+¢Ü¹¤ÖÖÂÖ»»ÖÆ£ºÃ¿1¡«2ÄêÂÖ»»Ò»´Î£¬¿É¼õÉÙÈıÏõ»ù¼×±½ÔÚÌåÄÚµÄĞî»ı£¬·ÀÖ¹ÈıÏõ»ù¼×±½Òı·¢µÄ¸ÎÔàËğÉË»òÆäËû¼²²¡µÄ·¢Õ¹¡£¶¨ÆÚ¼ì²é¸Î¹¦ÄÜ¡¢Ñªºìµ°°×ºÍ¾§Ìå¡£·²¸Î¹¦ÄÜÒì³£Ã÷ÏÔ»òÓĞÆ¶ÑªÊ±£¬½áºÏÄòÖĞ´úĞ»ÎïµÄ²â¶¨£¬¼°Ê±µ÷Àë¸ÚÎ» [10]¡£
+¾ÍÒµ½û¼ÉÕ÷
+¸÷ÖÖ¸ÎÔà¼²²¡¡¢ÒÒ¸Î±íÃæ¿¹Ô­Ğ¯´øÕß¡¢¸÷ÖÖÑªÒº²¡¡¢¾§Ìå»ì×Ç»ò°×ÄÚÕÏÒÔ¼°ÑÏÖØµÄÈ«ÉíĞÔÆ¤·ô²¡Õß£¬¾ù²»ÒË´ÓÊÂ±¾×÷Òµ [10]¡£
+¼à»¤ĞÔÌå¼ì
+¶ÔÈıÏõ»ù¼×±½×÷Òµ¹¤ÈËĞë×÷¾ÍÒµÇ°Ìå¼ì£»ÒÔ¼°Ã¿ÄêÒ»´ÎµÄ¼à»¤ĞÔÌå¼ì¡£¼ì²éÏîÄ¿°üÀ¨ÄÚ¿Æ¡¢ÑÛ¿ÆµÄÈ«Ãæ¼ì²é£¬¸Î¹¦ÄÜÊÔÑé¡¢ÒÒ¸Î±íÃæ¿¹Ô­²â¶¨¼°ÑªÏó¼ì²éµÈ [10]¡£
+¸öÈË·À»¤¼°×÷Òµ·À»¤
+¹¤ÒµÊ±´©½ôĞä¹¤×÷·ş£¬¹¤ºó³¹µ×Ï´ÊÖ²¢ÁÜÔ¡¡£¿ÉÓÃº¬10%ÑÇÁòËá¼Ø·ÊÔíÇåÏ´¡£ÑÇÁòËá¼ØÓöÈıÏõ»ù¼×±½³ÉºìÉ«£¬ÈçÄÜ½«ºìÉ«Ï´¾»£¬±íÊ¾Æ¤·ôÎÛÈ¾ÒÑÇå³ı¡£Ò²¿ÉÓÃ½şÓÚ9¡Ã1µÄ¾Æ¾«ÇâÑõ»¯ÄÆÈÜÒºµÄÃŞÇò²ÁÊÖ£¬Ï´¾»Õß²»³öÏÖ»ÆÉ«¡£¹¤×÷·şÒà¿ÉÓÃÍ¬ÑùÔ­Àí²âÊÔÇåÏ´³Ì¶È [10]¡£
+»·¾³Ó°Ïì
+²¥±¨
+2,4,6-ÈıÏõ»ù¼×±½×÷ÎªÒ»ÖÖÕ¨Ò©¡¢È¾ÁÏÒÔ¼°ÕÕÏà»¯Ñ§Æ·µÄÖĞ¼äÌå£¬ÔÚÆäÉú²úºÍÓ¦ÓÃ¹ı³ÌÖĞ£¬¿ÉÄÜ»áÍ¨¹ı¸÷ÖÖ·ÏÆúÎïÍ¾¾¶½øÈë»·¾³¡£ÈôÆä»Ó·¢ÖÁ¿ÕÆøÖĞ£¬ÒÔ25¡ãCÊ±µÄÕôÆûÑ¹8.02¡Á10-6ºÁÃ×¹¯Öù¼ÆËã£¬¿ÉÖª2,4,6-ÈıÏõ»ù¼×±½½«Í¬Ê±´æÔÚÓÚ´óÆøµÄÆøÌ¬ºÍ¿ÅÁ£Ì¬ÖĞ¡£ÆøÌ¬µÄ2,4,6-ÈıÏõ»ù¼×±½ÔÚ´óÆøÖĞ»áÓë¹â»¯Ñ§×÷ÓÃ²úÉúµÄôÇ»ù×ÔÓÉ»ù·¢Éú·´Ó¦¶ø½µ½â£¬¸Ã·´Ó¦ÔÚ¿ÕÆøÖĞµÄ°ëË¥ÆÚ´óÔ¼Îª120Ìì¡£¶ø¿ÅÁ£Ì¬µÄ2,4,6-ÈıÏõ»ù¼×±½ÔòÍ¨¹ıÊª³Á½µ»ò¸É³Á½µµÄ·½Ê½´Ó´óÆøÖĞÒÆ³ı¡£ÔÚ²»Í¬Ë®ÌåÖĞ£¬ÆäËÙÂÊ³£Êı·Ö±ğÎªºÓË®1.2¡Á10-3¡¢µ­Ë®Íå1.5¡Á10-4¡¢³ØÌÁË®5.8¡Á10-4ºÍÕôÁóË®1.7¡Á1-5/Ãë£¬¶ÔÓ¦µÄ°ëË¥ÆÚ·Ö±ğÔ¼Îª10·ÖÖÓ¡¢1.3Ğ¡Ê±¡¢20·ÖÖÓºÍ11.3Ğ¡Ê±¡£
+Èô2,4,6-ÈıÏõ»ù¼×±½½øÈëÍÁÈÀ£¬ÓÉÓÚÆäÆ½¾ùÍÁÈÀ-ÓĞ»úÌ¼Îü¸½ÏµÊı£¨Koc£©Îª1,600£¬Ô¤¼ÆÆäÔÚÍÁÈÀÖĞµÄÇ¨ÒÆĞÔ½ÏµÍ¡£¸ù¾İºàÀû¶¨ÂÉ³£Êı2.1¡Á10-8atm¡¤cm3/mol£¬¿ÉÒÔÅĞ¶ÏÔÚ³±ÊªÍÁÈÀ±íÃæµÄ»Ó·¢×÷ÓÃ²»ÊÇÆäÖ÷ÒªµÄ»·¾³¹éËŞ¹ı³Ì¡£ÔÚÍÁÈÀÖĞ£¬2,4,6-ÈıÏõ»ù¼×±½µÄÉúÎï½µ½â×÷ÓÃÏà¶Ô½ÏÈõ£¬µ«ÔÚÑáÑõÌõ¼şÏÂ£¬Æä»¹Ô­¹ı³Ì½ÏÎªÈİÒ×·¢Éú¡£
+Èô¸ÃÎïÖÊ½øÈëË®Ìå£¬2,4,6-ÈıÏõ»ù¼×±½¿ÉÄÜ»á»ùÓÚKocÖµÎü¸½ÔÚĞü¸¡¹ÌÌåºÍ³Á»ıÎïÉÏ¡£ÔÚºÃÑõÌõ¼şÏÂ£¬Î¢ÉúÎï¶Ô2,4,6-ÈıÏõ»ù¼×±½µÄÉúÎï×ª»¯ËÙ¶È¼«Îª»ºÂı¡£¸ù¾İºàÀû¶¨ÂÉ³£Êı£¬Ë®Ãæ»Ó·¢²»ÊÇÆäÖØÒªµÄ»·¾³¹éËŞÍ¾¾¶¡£ÉúÎïÅ¨ËõÒò×Ó£¨BCF£©¹À¼ÆÎª3.4£¬±íÃ÷Æä¶ÔË®ÉúÉúÎïµÄÉúÎï¸»¼¯Ç±Á¦½ÏµÍ¡£ÆøÏàÉ«Æ×-µç×Ó²¶»ñ¼ì²âÏÔÊ¾£¬ÔÚpHÖµÎª8.1µÄÌõ¼şÏÂ£¬2,4,6-ÈıÏõ»ù¼×±½µÄº£Ë®ÈÜÒºÔÚ108ÌìºóÅ¨¶ÈÎŞ±ä»¯£¬ËµÃ÷ÆäÔÚË®ÖĞÖĞĞÔÌõ¼şÏÂµÄË®½âÎÈ¶¨ĞÔ¡£
+Ö°Òµ±©Â¶Ö÷Òª·¢ÉúÔÚÆäÉú²úºÍ×÷Îª¾üÓÃÕ¨Ò©¡¢ÍÆ½ø¼ÁÊ¹ÓÃµÄ³¡Ëù£¬Í¨¹ıÎüÈëºÍÆ¤·ô½Ó´¥¿ÉÄÜµ¼ÖÂ¡£ÒòÎª¸ÃÎïÖÊÖ÷Òª´æÔÚÓÚ¾üÊÂÉèÊ©ÖĞ£¬¼à²âÊı¾İÏÔÊ¾£¬ÆÕÍ¨ÈËÈº½Ó´¥2,4,6-ÈıÏõ»ù¼×±½µÄ¿ÉÄÜĞÔ½ÏµÍ [10]¡£
+±ê×¼
+²¥±¨
+ÎÀÉú±ê×¼£ºÖĞ¹ú³µ¼ä¿ÕÆøÖĞ×î¸ßÈİĞíÅ¨¶ÈÎª1mg/m3£¨Æ¤£©¡£
+Ö°Òµ²¡Õï¶Ï¹ú¼Ò±ê×¼£ºÖ°ÒµĞÔÂıĞÔÈıÏõ»ù¼×±½ÖĞ¶¾Õï¶Ï±ê×¼¼°´¦ÀíÔ­ÔòGB3231-82£¬Ö°ÒµĞÔÈıÏõ»ù¼×±½°×ÄÚÕÏÕï¶Ï±ê×¼¼°´¦ÀíÔ­ÔòGB11512-89¡£
+Ó¦¼±´¦Àí
+²¥±¨<nr>
+Ğ¹Â©Ó¦¼±´¦Àí<nr>
+Á¢¼´¶ÔĞ¹Â©ÎÛÈ¾ÇøÓò½øĞĞ¸ôÀë£¬²¢ÔÚÖÜÎ§ÉèÖÃÃ÷ÏÔµÄ¾¯¸æ±êÖ¾£¬Í¬Ê±ÇĞ¶ÏÒ»ÇĞ»ğÔ´¡£½¨ÒéÓ¦¼±´¦ÀíÈËÔ±Åå´÷·À¶¾Ãæ¾ß£¬²¢´©ÉÏ»¯Ñ§·À»¤·ş¡£²ÉÈ¡´ëÊ©ÀäÈ´Ğ¹Â©ÇøÓò£¬·ÀÖ¹Õğ¶¯¡¢×²»÷ºÍÄ¦²Á£¬±ÜÃâ²úÉú·Û³¾¡£Ê¹ÓÃÎŞ»ğ»¨¹¤¾ßĞ¡ĞÄµØ½«Ğ¹Â©ÎïÇåÉ¨ÊÕ¼¯£¬²¢½«Æä×ªÒÆµ½°²È«µØµã¡£ÈçÌõ¼şÔÊĞí£¬¿ÉÊ¹ÓÃ´óÁ¿ÇåË®³åÏ´£¬½«Ï¡ÊÍºóµÄ·ÏË®ÅÅÈë·ÏË®´¦ÀíÏµÍ³¡£Èô·¢Éú´óÁ¿Ğ¹Â©£¬Ó¦ÏÈÓÃË®ÈóÊª£¬È»ºó½øĞĞÊÕ¼¯¡¢×ªÒÆ¡¢»ØÊÕ»ò½øĞĞÎŞº¦»¯´¦Àí£¬×îºó°´¹æ¶¨·ÏÆú¡£
+·À»¤´ëÊ©
+ºôÎüÏµÍ³·À»¤£º¿ÕÆøÖĞÅ¨¶È½Ï¸ßÊ±£¬Åå´÷·À¶¾Ãæ¾ß¡£½ô¼±ÊÂÌ¬ÇÀ¾È»òÌÓÉúÊ±£¬Åå´÷×Ô¸øÊ½ºôÎüÆ÷¡£
+ÑÛ¾¦·À»¤£º´÷°²È«·À»¤ÑÛ¾µ¡£
+·À»¤·ş£º´©½ôĞä¹¤×÷·ş£¬³¤Í²½ºĞ¬¡£
+ÊÖ·À»¤£º´÷ÏğÆ¤½ºÊÖÌ×¡£
+ÆäËû£º¹¤×÷ÏÖ³¡½ûÖ¹ÎüÑÌ¡¢½øÊ³ºÍÒûË®¡£¹¤×÷ºó£¬ÁÜÔ¡¸üÒÂ¡£±£³ÖÁ¼ºÃµÄÎÀÉúÏ°¹ß¡£½øĞĞ¾ÍÒµÇ°ºÍ¶¨ÆÚµÄÌå¼ì [10]¡£
+¼±¾È´ëÊ©
+ÑÛ¾¦½Ó´¥£ºÊ×ÏÈÈ·ÈÏÊÜº¦ÕßÊÇ·ñÅå´÷ÒşĞÎÑÛ¾µ£¬ÈçÓĞ£¬Ó¦Á¢¼´È¡³ö¡£Ê¹ÓÃÇåË®»òÉúÀíÑÎË®³åÏ´ÊÜº¦ÕßµÄÑÛ¾¦ÖÁÉÙ20ÖÁ30·ÖÖÓ£¬²¢¾¡¿ìÁªÏµÒ½Ôº»ò¶¾Îï¿ØÖÆÖĞĞÄ¡£Î´¾­Ò½ÉúÖ¸Ê¾£¬²»ÒªÔÚÊÜº¦ÕßÑÛ¾¦ÖĞÍ¿Ä¨ÈÎºÎÒ©¸à¡¢ÓÍ¼Á»òÒ©Îï¡£¼´Ê¹Ã»ÓĞ³öÏÖºìÖ×»ò´Ì¼¤Ö¢×´£¬Ò²Ó¦½«ÊÜº¦ÕßËÍÍùÒ½Ôº½ÓÊÜ¼ì²é¡£
+Æ¤·ô½Ó´¥£ºÁ¢¼´ÓÃ´óÁ¿ÇåË®³åÏ´ÊÜÓ°ÏìµÄÆ¤·ô£¬Í¬Ê±ÍÑÈ¥²¢Í×ÉÆ´¦ÀíÊÜÎÛÈ¾µÄÒÂÎï¡£ÓÃ·ÊÔíºÍÇåË®ÇáÇáÇåÏ´ÊÜÎÛÈ¾µÄÆ¤·ôÇøÓò¡£ÈçÓĞ·¢ºì»ò´Ì¼¤µÈÖ¢×´£¬Ó¦Á¢¼´ÁªÏµÒ½Éú£¬²¢×¼±¸½«ÊÜº¦ÕßËÍÍùÒ½ÔºÖÎÁÆ¡£
+ÎüÈë£ºÑ¸ËÙÀë¿ªÎÛÈ¾ÇøÓò£¬ºôÎüĞÂÏÊ¿ÕÆø¡£Èô³öÏÖºôÎüÀ§ÄÑ¡¢¿ÈËÔ¡¢ºíÁü»òĞØ²¿²»ÊÊµÈÖ¢×´£¬Ó¦Á¢¼´ÁªÏµÒ½Éú£¬²¢×¼±¸½«ÊÜº¦ÕßËÍÍùÒ½Ôº¡£¾ÈÔ®ÈËÔ±½øÈëÎÛÈ¾ÇøÓòÊ±£¬Ó¦Åä±¸ÊÊµ±µÄºôÎü·À»¤Éè±¸£¬ÓÅÏÈÊ¹ÓÃ×Ô¸øÊ½ºôÎüÆ÷£¨SCBA£©£»Èç¹ûÃ»ÓĞ£¬ÔòÓ¦Ê¹ÓÃ²»µÍÓÚ·À»¤·ş½¨ÒéµÈ¼¶µÄºôÎü·À»¤×°±¸¡£
+ÉãÈë£ºÇĞÎğ´ßÍÂ¡£ÈôÊÜº¦ÕßÒâÊ¶ÇåĞÑÇÒÎŞ³é´¤£¬¿É¸øÓè1ÖÁ2±­Ë®Ï¡ÊÍÌåÄÚ»¯Ñ§ÎïÖÊ£¬²¢Á¢¼´ÁªÏµÒ½Ôº»ò¶¾Îï¿ØÖÆÖĞĞÄ¡£¸ù¾İÒ½Éú½¨Òé£¬×¼±¸½«ÊÜº¦ÕßËÍÍùÒ½Ôº¡£ÈôÊÜº¦Õß³öÏÖ³é´¤»òÒâÊ¶É¥Ê§£¬²»Òª¸øÓèÈÎºÎ¿Ú·şÎïÖÊ£¬È·±£ÆøµÀ³©Í¨£¬²¢½«ÊÜº¦ÕßÖÃÓÚ²àÎÔÎ»£¬Í·²¿µÍÓÚÉíÌå£¬±ÜÃâ´ßÍÂ£¬²¢Á¢¼´ËÍÒ½ [11]¡£
+°²È«ĞÅÏ¢
+²¥±¨
+°²È«ÊõÓï
+S26£ºIn case of contact with eyes, rinse immediately with plenty of water and seek medical advice.<br>
+ÑÛ¾¦½Ó´¥ºó£¬Á¢¼´ÓÃ´óÁ¿Ë®³åÏ´²¢Õ÷ÇóÒ½ÉúÒâ¼û¡£<br>
+S36/37£ºWear suitable protective clothing a<br>nd gloves.<br>
+´©´÷ÊÊµ±µÄ·À»¤·şºÍÊÖÌ×¡£<br>
+·çÏÕÊõÓï<br>
+R1£ºExplosive when dry.<br>
+¸ÉÔïÊ±ÓĞ±¬Õ¨ĞÔ¡£<br>
+R11£ºHighly flammable.<br>
+¸ß¶ÈÒ×È¼µÄ¡£v
+R20/21/22£ºHarmful by inhalation, in contact with skin and if swallowed.<br>
+ÎüÈë¡¢ÓëÆ¤·ô½Ó´¥ºÍÍÌÊ³ÊÇÓĞº¦µÄ¡£<br>
+R36£ºIrritating to eyes.<br>
+´Ì¼¤ÑÛ¾¦¡£<br>
