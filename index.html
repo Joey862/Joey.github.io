@@ -2,28 +2,31 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Joey化学小站</title>
     <style>
-        /* 基础样式 */
+        /* 基础样式 - 优化移动端体验 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
         
         body {
             background-color: #f8f9fa;
             color: #333;
             line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
         }
         
-        /* 导航栏 */
+        /* 导航栏 - 优化移动端菜单 */
         header {
             background: linear-gradient(135deg, #6e8efb, #a777e3);
             color: white;
-            padding: 1rem 0;
+            padding: 0.8rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -40,9 +43,10 @@
         }
         
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: bold;
             letter-spacing: 1px;
+            white-space: nowrap;
         }
         
         .nav-links {
@@ -51,7 +55,7 @@
         }
         
         .nav-links li {
-            margin-left: 30px;
+            margin-left: 20px;
         }
         
         .nav-links a {
@@ -61,42 +65,56 @@
             transition: all 0.3s ease;
             padding: 5px 10px;
             border-radius: 4px;
+            font-size: 0.95rem;
         }
         
         .nav-links a:hover {
             background-color: rgba(255, 255, 255, 0.2);
         }
         
-        /* 主要内容 */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* 主要内容 - 优化移动端显示 */
         .hero {
-            height: 80vh;
+            min-height: 90vh;
+            height: auto;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 20px;
+            padding: 2rem 20px;
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
                         url('https://imgs.699pic.com/images/303/391/912.jpg!seo.v1');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             color: white;
         }
         
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
             animation: fadeIn 1.5s ease;
+            line-height: 1.2;
         }
         
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             max-width: 700px;
-            margin-bottom: 30px;
+            margin-bottom: 2rem;
             animation: fadeIn 2s ease;
+            padding: 0 15px;
         }
         
-        /* 按钮样式 */
+        /* 按钮样式 - 优化触摸体验 */
         .btn {
             display: inline-block;
             padding: 12px 30px;
@@ -111,12 +129,15 @@
             font-size: 1rem;
             margin: 10px;
             box-shadow: 0 4px 15px rgba(110, 142, 251, 0.4);
+            -webkit-appearance: none;
+            min-width: 150px;
         }
         
-        .btn:hover {
+        .btn:hover, .btn:focus {
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(110, 142, 251, 0.6);
             background: #5a7df4;
+            outline: none;
         }
         
         .btn-outline {
@@ -125,23 +146,23 @@
             box-shadow: none;
         }
         
-        .btn-outline:hover {
+        .btn-outline:hover, .btn-outline:focus {
             background: rgba(255, 255, 255, 0.2);
         }
         
-        /* 特色部分 */
+        /* 特色部分 - 优化网格布局 */
         .features {
             max-width: 1200px;
-            margin: 80px auto;
+            margin: 3rem auto;
             padding: 0 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
         
         .feature-card {
             background: white;
-            padding: 30px;
+            padding: 1.5rem;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -154,40 +175,47 @@
         }
         
         .feature-icon {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: #6e8efb;
-            margin-bottom: 20px;
+            margin-bottom: 1rem;
         }
         
         .feature-card h3 {
-            margin-bottom: 15px;
+            margin-bottom: 1rem;
             font-size: 1.3rem;
         }
         
-        /* 页脚 */
+        .feature-card p {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        /* 页脚 - 优化移动端显示 */
         footer {
             background: #343a40;
             color: white;
             text-align: center;
-            padding: 30px 0;
-            margin-top: 50px;
+            padding: 2rem 0;
+            margin-top: 3rem;
         }
         
         .footer-links {
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
             list-style: none;
-            margin: 20px 0;
+            margin: 1rem 0;
         }
         
         .footer-links li {
-            margin: 0 15px;
+            margin: 0.5rem 1rem;
         }
         
         .footer-links a {
             color: #adb5bd;
             text-decoration: none;
             transition: color 0.3s ease;
+            font-size: 0.9rem;
         }
         
         .footer-links a:hover {
@@ -195,18 +223,20 @@
         }
         
         .social-links {
-            margin: 20px 0;
+            margin: 1rem 0;
         }
         
         .social-links a {
             color: white;
-            margin: 0 10px;
+            margin: 0 0.8rem;
             font-size: 1.2rem;
             transition: color 0.3s ease;
+            display: inline-block;
         }
         
         .social-links a:hover {
             color: #6e8efb;
+            transform: translateY(-3px);
         }
         
         /* 动画 */
@@ -221,22 +251,73 @@
             }
         }
         
-        /* 响应式设计 */
+        /* 响应式设计 - 优化移动端体验 */
         @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
             .nav-links {
-                display: none;
+                position: fixed;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, #6e8efb, #a777e3);
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            
+            .nav-links li {
+                margin: 0.8rem 0;
             }
             
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             
             .hero p {
                 font-size: 1rem;
             }
             
+            .btn {
+                padding: 10px 20px;
+                min-width: 120px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 0.95rem;
+            }
+            
             .features {
                 grid-template-columns: 1fr;
+                padding: 0 15px;
+            }
+            
+            .feature-card {
+                padding: 1.2rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+            }
+            
+            .footer-links li {
+                margin: 0.3rem 0;
             }
         }
     </style>
@@ -246,25 +327,28 @@
     <!-- 导航栏 -->
     <header>
         <nav>
-            <div class="logo">LOGO</div>
-            <ul class="nav-links">
+            <div class="logo">Joey化学小站</div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+ <li><a href="结构.html">有机结构室</a></li>
+<li><a href="bao.html">钠与水的反应</a></li>
                 <li><a href="实验室.html">有机实验室</a></li>
+      <li><a href="sp.html">优质视频可以投稿</a></li>
                 <li><a href="lao.html">老网站</a></li>
                 <li><a href="1.html">化学论坛</a></li>
-                             <li><a href="化圈.html">化圈成员</a></li>
+                <li><a href="化圈.html">化圈成员</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- 主要内容 -->
     <section class="hero" id="home">
-        <h1>欢迎来到Joey的网站</h1>
-        <p>在此交流化学</p>
+        <h1>欢迎来到Joey的化学网站</h1>
+        <p>在这里您可以自由交流化学知识，探索有机化学的奥秘</p>
         <div>
-            <!-- 方法1: 使用a标签包裹按钮 -->
             <a href="实验室.html" class="btn">进入实验室</a>
-            
-            <!-- 方法2: 使用onclick事件跳转 -->
             <button class="btn btn-outline" onclick="window.location.href='lao.html'">往昔</button>
         </div>
     </section>
@@ -277,7 +361,6 @@
             </div>
             <h3>快速高效</h3>
             <p>交流化学不会禁言，网警看不到，畅所欲言</p>
-            <!-- 方法3: 使用JavaScript函数跳转 -->
             <button class="btn" onclick="jumpToPage('1.html#speed')">了解更多</button>
         </div>
         
@@ -287,23 +370,28 @@
             </div>
             <h3>安全可靠</h3>
             <p>采用最先进的安全技术，确保畅所欲言。</p>
-           
+            <button class="btn" onclick="jumpToPage('1.html#security')">了解更多</button>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <h3>社区支持</h3>
+            <p>加入我们的化学爱好者社区，共同学习进步。</p>
+            <button class="btn" onclick="jumpToPage('化圈.html')">加入我们</button>
+        </div>
+    </section>
 
     <!-- 页脚 -->
     <footer>
         <div class="social-links">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-weixin"></i></a>
+            <a href="#"><i class="fab fa-qq"></i></a>
+            <a href="#"><i class="fab fa-weibo"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
         </div>
-        <ul class="footer-links">
-            <li><a href="privacy.html">隐私政策</a></li>
-            <li><a href="terms.html">使用条款</a></li>
-            <li><a href="faq.html">常见问题</a></li>
-        </ul>
-        <p>&copy; 2025 Joey. 保留所有权利.</p>
-    </footer>
+
 
     <script>
         // JavaScript跳转函数
@@ -318,6 +406,32 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+            });
+        });
+        
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // 点击菜单项后关闭菜单
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // 优化触摸反馈
+        document.querySelectorAll('button, a').forEach(element => {
+            element.addEventListener('touchstart', function() {
+                this.classList.add('touch-active');
+            });
+            
+            element.addEventListener('touchend', function() {
+                this.classList.remove('touch-active');
             });
         });
     </script>
