@@ -1,4 +1,6 @@
 时间戳,User Agent,操作系统平台,屏幕宽度,屏幕高度,颜色深度,系统语言,时区,CPU核心数,设备内存(GB),Cookie是否启用,Do Not Track设置,IP地址
+æ¶é´æ³,User Agent,æä½ç³»ç»å¹³å°,å±å¹å®½åº¦,å±å¹é«åº¦,é¢è²æ·±åº¦,ç³»ç»è¯­è¨,æ¶åº,CPUæ ¸å¿æ°,è®¾å¤åå­(GB),Cookieæ¯å¦å¯ç¨,Do Not Trackè®¾ç½®,IPå°å
 
 "2025-07-14T06:26:07.384Z","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0","Win32","1536","864","24","zh-CN","Asia/Shanghai","4","4","true","unknown","unknown"
 "2025-07-14T06:27:53.326Z","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0","Win32","1536","864","24","zh-CN","Asia/Shanghai","4","4","true","unknown","unknown"
+"2025-07-14T06:30:31.343Z","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0","Win32","1536","864","24","zh-CN","Asia/Shanghai","4","4","true","unknown","2409:8a62:251d:3161:6860:6c73:2841:d589"
