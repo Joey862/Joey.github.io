@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>化圈成员列表</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .member-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .member-item {
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #f8f9fa;
+            border-left: 5px solid #3498db;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .member-item:hover {
+            background-color: #e9f7fe;
+            transform: translateX(5px);
+        }
+        .member-name {
+            font-weight: bold;
+            font-size: 18px;
+            color: #2c3e50;
+        }
+        .member-location {
+            float: right;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        .unknown {
+            color: #e74c3c;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>化圈成员列表</h1>
+        <ul class="member-list">
+            <li class="member-item">
+                <span class="member-name">氯气CL2小王</span>
+                <span class="member-location">河南</span>
+            </li>
+            <li class="member-item">
+                <span class="member-name">落魄的化学生</span>
+                <span class="member-location">广元</span>
+            </li>
+            <li class="member-item">
+                <span class="member-name">小云君</span>
+                <span class="member-location">福建</span>
+            </li>
+            <li class="member-item">
+                <span class="member-name">化圈威士忌勾兑胡辣汤</span>
+                <span class="member-location">山西</span>
+            </li>
+            <li class="member-item">
+                <span class="member-name">A</span>
+                <span class="member-location unknown">未知</span>
+            </li>
+            <li class="member-item">
+                <span class="member-name">-乙酸铅</span>
+                <span class="member-location">徐州</span>
+            </li>
+            <li class="member-item">
+                <span class="member-name">强氧化的KCIO3</span>
+                <span class="member-location">上海</span>
+            </li>
+            <li class="member-item">
+                <span class="member-name">我不是三硝酸甘油酯</span>
+                <span class="member-location">内蒙古</span>
+            </li>
+            <li class="member-item">
+                <span class="member-name">小怡</span>
+                <span class="member-location unknown">未知</span>
+            </li>
+            <li class="member-item">
+                <span class="member-name">三碘化钾</span>
+                <span class="member-location">河北</span>
+            </li>
+           <li class="member-item">
+                <span class="member-name">Joey</span>
+                <span class="member-location">四川</span>
+            </li>
+        </ul>
+        <div class="footer">
+            最后更新: 2025年7月14日 | 共11名成员
+        </div>
+    </div>
+</body>
+</html>
