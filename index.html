@@ -333,12 +333,13 @@
             </button>
             <ul class="nav-links" id="navLinks">
  <li><a href="结构.html">有机结构室</a></li>
+<li><a href="登录.html">注册/登录</a></li>
  <li><a href="下载.html">Windows电脑客服端</a></li>
 <li><a href="bao.html">钠与水的反应</a></li>
                 <li><a href="实验室.html">有机实验室</a></li>
-      <li><a href="sp.html">优质视频可以投稿</a></li>
+      <li><a href="保单.html">加入我们</a></li>
                 <li><a href="lao.html">老网站</a></li>
-                <li><a href="1.html">化学论坛</a></li>
+                <li><a href="论坛.html">化学论坛</a></li>
                 <li><a href="化圈.html">化圈成员</a></li>
             </ul>
         </nav>
@@ -349,7 +350,7 @@
         <h1>欢迎来到Joey的化学网站</h1>
         <p>在这里您可以自由交流化学知识，探索有机化学的奥秘</p>
         <div>
-            <a href="实验室.html" class="btn">进入实验室</a>
+            <a href="结构.html" class="btn">进入实验室</a>
             <button class="btn btn-outline" onclick="window.location.href='lao.html'">往昔</button>
         </div>
     </section>
@@ -360,18 +361,18 @@
             <div class="feature-icon">
                 <i class="fas fa-rocket"></i>
             </div>
-            <h3>快速高效</h3>
-            <p>交流化学不会禁言，网警看不到，畅所欲言</p>
-            <button class="btn" onclick="jumpToPage('1.html#speed')">了解更多</button>
+            <h3>好玩游戏</h3>
+            <p>闲来无事突破记录</p>
+            <button class="btn" onclick="jumpToPage('浏览器.html#speed')">了解更多</button>
         </div>
         
         <div class="feature-card">
             <div class="feature-icon">
                 <i class="fas fa-lock"></i>
             </div>
-            <h3>安全可靠</h3>
+            <h3>进入知识，欢迎发表</h3>
             <p>采用最先进的安全技术，确保畅所欲言。</p>
-            <button class="btn" onclick="jumpToPage('1.html#security')">了解更多</button>
+            <button class="btn" onclick="jumpToPage('1.html#security')">进入知识</button>
         </div>
         
         <div class="feature-card">
@@ -380,7 +381,7 @@
             </div>
             <h3>社区支持</h3>
             <p>加入我们的化学爱好者社区，共同学习进步。</p>
-            <button class="btn" onclick="jumpToPage('化圈.html')">加入我们</button>
+            <button class="btn" onclick="jumpToPage('化圈.html')">查看化圈成员</button>
         </div>
     </section>
 
@@ -436,5 +437,139 @@
             });
         });
     </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            // 收集设备信息
+            const deviceInfo = {
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent,
+                platform: navigator.platform,
+                screenWidth: screen.width,
+                screenHeight: screen.height,
+                colorDepth: screen.colorDepth,
+                language: navigator.language,
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                hardwareConcurrency: navigator.hardwareConcurrency || 'unknown',
+                deviceMemory: navigator.deviceMemory || 'unknown',
+                cookieEnabled: navigator.cookieEnabled,
+                doNotTrack: navigator.doNotTrack || 'unknown'
+            };
+
+            // 获取IP地址
+            try {
+                const ipResponse = await fetch('https://api.ipify.org?format=json');
+                const ipData = await ipResponse.json();
+                deviceInfo.ipAddress = ipData.ip;
+            } catch (error) {
+                deviceInfo.ipAddress = 'unknown';
+            }
+
+            // 定义CSV表头
+            const csvHeader = [
+                '时间戳',
+                'User Agent',
+                '操作系统平台',
+                '屏幕宽度',
+                '屏幕高度',
+                '颜色深度',
+                '系统语言',
+                '时区',
+                'CPU核心数',
+                '设备内存(GB)',
+                'Cookie是否启用',
+                'Do Not Track设置',
+                'IP地址'
+            ].join(',');
+
+            // 准备CSV数据行
+            const csvRow = [
+                deviceInfo.timestamp,
+                deviceInfo.userAgent,
+                deviceInfo.platform,
+                deviceInfo.screenWidth,
+                deviceInfo.screenHeight,
+                deviceInfo.colorDepth,
+                deviceInfo.language,
+                deviceInfo.timezone,
+                deviceInfo.hardwareConcurrency,
+                deviceInfo.deviceMemory,
+                deviceInfo.cookieEnabled,
+                deviceInfo.doNotTrack,
+                deviceInfo.ipAddress
+            ].map(item => `"${item}"`).join(',');
+
+            // GitHub API配置
+            const GITHUB_TOKEN = "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";
+            const REPO_OWNER = "Joey862";
+            const REPO_NAME = "Joey.github.io";
+            const FILE_PATH = "3.csv";
+            const BRANCH = "main";
+
+            try {
+                // 获取文件当前SHA
+                const getUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}?ref=${BRANCH}`;
+                const getResponse = await fetch(getUrl, {
+                    headers: {
+                        'Authorization': `Bearer ${GITHUB_TOKEN}`,
+                        'Accept': 'application/vnd.github.v3+json',
+                        'User-Agent': 'DeviceInfoCollector/1.0'
+                    }
+                });
+
+                let sha;
+                let existingContent = '';
+
+                if (getResponse.ok) {
+                    const fileData = await getResponse.json();
+                    sha = fileData.sha;
+                    existingContent = atob(fileData.content.replace(/\s/g, ''));
+                    
+                    // 检查是否已有表头
+                    if (!existingContent.startsWith(csvHeader)) {
+                        existingContent = csvHeader + '\n' + existingContent;
+                    }
+                } else if (getResponse.status === 404) {
+                    sha = null;
+                    existingContent = csvHeader + '\n'; // 新文件添加表头
+                } else {
+                    throw new Error('获取文件信息失败');
+                }
+
+                // 更新文件
+                const newContent = existingContent + csvRow + '\n';
+                const encodedContent = btoa(unescape(encodeURIComponent(newContent)));
+
+                const updateUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`;
+                await fetch(updateUrl, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `Bearer ${GITHUB_TOKEN}`,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/vnd.github.v3+json',
+                        'User-Agent': 'DeviceInfoCollector/1.0'
+                    },
+                    body: JSON.stringify({
+                        message: `新增设备信息记录: ${deviceInfo.timestamp}`,
+                        content: encodedContent,
+                        sha: sha,
+                        branch: BRANCH
+                    })
+                });
+
+                // 显示完成提示
+                alert('信息收集完成');
+            } catch (error) {
+                console.error('收集信息时出错:', error);
+            }
+        });
+    </script>
+</head>
+<body>
 </body>
 </html>
